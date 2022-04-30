@@ -7,6 +7,10 @@ public class User {
 
 	private String name;
 
+	public void sayHello() {
+		System.out.println("Hello from Component User bean");
+	}
+	
 	public String getName() {
 		return name;
 	}
@@ -15,7 +19,4 @@ public class User {
 		this.name = name;
 	}
 	
-	public void helloHello() {
-		System.out.println("Hello from Component User bean");
-	}
 }

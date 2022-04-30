@@ -13,7 +13,7 @@ public class Test5 {
 
 		User user = context.getBean(User.class);
 		System.out.println("Component User name from spring context is: " + user.getName());
-		user.helloHello();
+		user.sayHello();
 
 	}
 }
