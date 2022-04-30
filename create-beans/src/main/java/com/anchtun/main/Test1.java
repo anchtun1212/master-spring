@@ -14,7 +14,7 @@ public class Test1 {
 		 */
 		Product productNonSC = new Product();
 		productNonSC.setName("Iphone 12");
-		System.out.println("Product from non-spring context is: " + productNonSC.getName());
+		System.out.println("Product name from non-spring context is: " + productNonSC.getName());
 
 		/**
 		 * the var keyword was introduced in Java 10. Type inference is used in var
@@ -28,7 +28,7 @@ public class Test1 {
 		 * framework)
 		 */
 		Product productSC = context.getBean(Product.class);
-		System.out.println("Product from spring context is: " + productSC.getName());
+		System.out.println("Product name from spring context is: " + productSC.getName());
 		
 		/**
 		 * we don't need to use any explicit casting while fetching a bean from context.

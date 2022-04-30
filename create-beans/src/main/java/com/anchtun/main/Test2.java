@@ -14,13 +14,13 @@ public class Test2 {
 		try {
 			// will get NoUniqueBeanDefinitionException
 			Product productSC = context.getBean(Product.class);
-			System.out.println("Product from spring context is: " + productSC.getName());
+			System.out.println("Product name from spring context is: " + productSC.getName());
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		// now ok
 		Product productLaptopSonyVaio = context.getBean("product1", Product.class);
-		System.out.println("Product from spring context is: " + productLaptopSonyVaio.getName());
+		System.out.println("Product name from spring context is: " + productLaptopSonyVaio.getName());
 	}
 }

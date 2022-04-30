@@ -12,12 +12,12 @@ public class Test3 {
 		var context = new AnnotationConfigApplicationContext(ProjectConfig3.class);
 
 		Product product1 = context.getBean("laptopSonyVaio", Product.class);
-		System.out.println("Product from spring context is: " + product1.getName());
+		System.out.println("Product name from spring context is: " + product1.getName());
 		
 		Product product2 = context.getBean("laptopDell", Product.class);
-		System.out.println("Product from spring context is: " + product2.getName());
+		System.out.println("Product name from spring context is: " + product2.getName());
 		
 		Product product3 = context.getBean("laptopLenovo", Product.class);
-		System.out.println("Product from spring context is: " + product3.getName());
+		System.out.println("Product name from spring context is: " + product3.getName());
 	}
 }

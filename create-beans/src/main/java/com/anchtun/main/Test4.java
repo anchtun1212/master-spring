@@ -12,7 +12,7 @@ public class Test4 {
 		var context = new AnnotationConfigApplicationContext(ProjectConfig4.class);
 
 		Product product = context.getBean(Product.class);
-		System.out.println("Primar Product from spring context is: " + product.getName());
+		System.out.println("Primary Product name from spring context is: " + product.getName());
 
 	}
 }
