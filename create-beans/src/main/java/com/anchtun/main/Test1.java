@@ -3,9 +3,9 @@ package com.anchtun.main;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import com.anchtun.beans.Product;
-import com.anchtun.config.ProjectConfig;
+import com.anchtun.config.ProjectConfig1;
 
-public class Test {
+public class Test1 {
 
 	public static void main(String[] args) {
 
@@ -21,7 +21,7 @@ public class Test {
 		 * keyword in which it detects automatically the datatype of a variable based on
 		 * the surrounding context.
 		 */
-		var context = new AnnotationConfigApplicationContext(ProjectConfig.class);
+		var context = new AnnotationConfigApplicationContext(ProjectConfig1.class);
 
 		/**
 		 * this object is a bean: we get it from the context (memory inside spring
@@ -29,7 +29,7 @@ public class Test {
 		 */
 		Product productSC = context.getBean(Product.class);
 		System.out.println("Product from spring context is: " + productSC.getName());
-
+		
 		/**
 		 * we don't need to use any explicit casting while fetching a bean from context.
 		 * Spring is smart enough to look of the bean of the type you requested in its
