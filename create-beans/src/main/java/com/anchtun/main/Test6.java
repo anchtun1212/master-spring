@@ -14,7 +14,7 @@ public class Test6 {
 		Department department = context.getBean(Department.class);
 		System.out.println("Component Department name from spring context is: " + department.getName());
 		department.printHello();
-		//will call @@PreDestroy
+		//will call @PreDestroy
 		context.close();
 
 	}
