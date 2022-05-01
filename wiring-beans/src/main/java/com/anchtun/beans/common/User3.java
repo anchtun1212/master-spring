@@ -1,23 +1,16 @@
-package com.anchtun.beans;
+package com.anchtun.beans.common;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class User2 {
+public class User3 {
 
 	private String name = "Anchtun";
-	
-	/**
-	 * Marks on field, constructor, setter method
-	 * is used to auto-wire the beans that is 'injecting beans' (objects) at runtime
-	 * by Spring Dependency Injection mechanism
-	 */
-	@Autowired
 	private Product2 product;
 	
-	public User2() {
-		System.out.println("User2 bean created by Spring");
+	public User3() {
+		System.out.println("User3 bean created by Spring");
 	}
 
 	public String getName() {
@@ -32,6 +25,7 @@ public class User2 {
 		return product;
 	}
 
+	@Autowired
 	public void setProduct(Product2 product) {
 		this.product = product;
 	}

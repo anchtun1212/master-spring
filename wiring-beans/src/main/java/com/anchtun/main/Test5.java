@@ -2,8 +2,8 @@ package com.anchtun.main;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import com.anchtun.beans.Product2;
-import com.anchtun.beans.User4;
+import com.anchtun.beans.common.Product2;
+import com.anchtun.beans.common.User4;
 import com.anchtun.config.ProjectConfig3;
 /**
  * 

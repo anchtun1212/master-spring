@@ -1,4 +1,4 @@
-package com.anchtun.beans;
+package com.anchtun.beans.common;
 
 public class User {
 

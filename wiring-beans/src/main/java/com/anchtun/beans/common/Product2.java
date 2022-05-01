@@ -1,4 +1,4 @@
-package com.anchtun.beans;
+package com.anchtun.beans.common;
 
 import org.springframework.stereotype.Component;
 
@@ -8,7 +8,7 @@ public class Product2 {
 	private String name = "Laptop Lenovo";
 	
 	public Product2() {
-		System.out.println("Product bean created by Spring");
+		System.out.println("Product2 bean created by Spring");
 	}
 
 	public String getName() {

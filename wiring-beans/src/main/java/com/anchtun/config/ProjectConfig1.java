@@ -3,8 +3,8 @@ package com.anchtun.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import com.anchtun.beans.Product;
-import com.anchtun.beans.User;
+import com.anchtun.beans.common.Product;
+import com.anchtun.beans.common.User;
 
 @Configuration
 public class ProjectConfig1 {
