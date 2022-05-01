@@ -17,7 +17,7 @@ public class User2 {
 	private Product2 product;
 	
 	public User2() {
-		System.out.println("User bean created by Spring");
+		System.out.println("User2 bean created by Spring");
 	}
 
 	public String getName() {
