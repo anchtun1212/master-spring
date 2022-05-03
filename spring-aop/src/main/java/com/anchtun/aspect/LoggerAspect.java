@@ -47,4 +47,12 @@ public class LoggerAspect {
 		logger.info("The method: " + joinPoint.getSignature() + " has been run successfully with this status: " + retValue);
 	}
 
+	// use the explicit created Annotation
+	@Around("@annotation(com.anchtun.annotation.LogAspect)")
+	public void logWithAnnotation(ProceedingJoinPoint joinPoint) throws Throwable {
+		logger.info(joinPoint.getSignature().toString() + " method execution start through annotation @LogAspect");
+		joinPoint.proceed();
+		logger.info(joinPoint.getSignature().toString() + " method execution end through annotation @LogAspect");
+	}
+
 }
