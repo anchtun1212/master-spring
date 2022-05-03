@@ -1,5 +1,5 @@
 # master-spring
-To master Spring please follow this:
+Please follow this:
 
 1- create-beans
 
