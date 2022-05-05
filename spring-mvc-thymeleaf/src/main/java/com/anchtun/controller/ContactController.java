@@ -38,7 +38,7 @@ public class ContactController {
 	/**
 	 * 
 	 * send data using POJO class
-	 * Spring boot will map the name in html with the named of Contact's attribute automatically
+	 * Spring boot will map the name in html with the name of Contact's attributes automatically
 	 */
 	@RequestMapping(value = "/saveMsg2", method = RequestMethod.POST)
 	public ModelAndView saveMsg2(Contact contact) {
