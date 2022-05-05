@@ -8,6 +8,17 @@
 	<b><u>Contact:</u></b>
 	<br/><br/>
 	<b><a href = "mailto: med.aymen.charrada@gmail.com" target="_blank">email: med.aymen.charrada@gmail.com</a></b>
+	<br/><br/>
+	
+	<form th:action="@{/saveMsg}" method="post">
+		<input type="text" id="fullName" name="fullName" placeholder="Please enter your full name"></input>
+		<br/><br/>
+		<input type="text" id="mobile" name="mobile" placeholder="Please enter your mobile"></input>
+		<br/><br/>
+		<input type="text" id="subject" name="subject" placeholder="Please enter your subject"></input>
+		<br/><br/>
+		<input type="submit"></button>		
+	</form>
 </body>
 
 </html>
