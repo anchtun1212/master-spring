@@ -10,3 +10,5 @@ Please follow this:
 4- spring-aop
 
 5- spring-boot-web-app
+
+6- spring-mcv-thymeleaf
