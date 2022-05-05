@@ -11,4 +11,4 @@ Please follow this:
 
 5- spring-boot-web-app
 
-6- spring-mcv-thymeleaf
+6- spring-mvc-thymeleaf
