@@ -10,8 +10,7 @@ import com.anchtun.config.ProjectConfig3;
  * 
  * USING AOP,
  * 
- * Configuring advices inside AOP
- * create new annotation @LogAspect
+ * Configuring advices inside AOP and Configuring advices inside AOP
  */
 public class Test3 {
 
