@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.anchtun</groupId>
-	<artifactId>spring-mcv-thymeleaf</artifactId>
+	<artifactId>spring-mvc-thymeleaf</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>spring-mcv-thymeleaf</name>
+	<name>spring-mvc-thymeleaf</name>
 	<description>Adapting thymeleaf for building dynamic content</description>
 	<properties>
 		<java.version>11</java.version>
