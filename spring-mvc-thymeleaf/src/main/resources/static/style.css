@@ -1,28 +1,21 @@
-.Table {
-	display: table;
-}
-
-.Title {
-	display: table-caption;
-	text-align: center;
-	font-weight: bold;
-	font-size: larger;
-}
-
-.Heading {
-	display: table-row;
-	font-weight: bold;
-	text-align: center;
-}
-
 .Row {
 	display: table-row;
 }
-
 .Cell {
 	display: table-cell;
 	border: solid;
 	border-width: thin;
-	padding-left: 5px;
-	padding-right: 5px;
+	padding-left: 7px;
+	padding-right: 7px;
+}
+.alert {
+    padding: 5px;
+    margin-bottom: 5px;
+    border: 1px solid transparent;
+    border-radius: 2px;
+}
+.alert-danger {
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
 }

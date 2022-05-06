@@ -1,7 +1,11 @@
 package com.anchtun.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -28,6 +32,8 @@ public class ContactController {
 
 	@RequestMapping("/contact")
 	public String homePage(Model model) {
+		// add this line to use this attribute for validation
+		model.addAttribute("contact", new Contact());
 		return "contact.html";
 	}
 
@@ -53,8 +59,17 @@ public class ContactController {
 	 * Spring boot will map the name in html with the name of Contact's attributes automatically
 	 */
 	@RequestMapping(value = "/saveMsg2", method = RequestMethod.POST)
-	public ModelAndView saveMsg2(Contact contact) {
-		log.info(contact.toString());
-		return new ModelAndView("redirect:/contact");
+	/**
+	 * @Valid to tell spring that we need to validate Contact object based on the validation annotation configurations
+	 * For any issues, spring populates the error details inside the Errors object
+	 * @ModelAttribute("contact") to catch the error from the UI: error: ${#fields.errors('contact.*')}
+	 */
+	public String saveMsg2(@Valid @ModelAttribute("contact") Contact contact, Errors errors) {
+		if (errors.hasErrors()) {
+			log.error("Contact form validation failed due to: " + errors.toString());
+		} else {
+			log.info(contact.toString());
+		}
+		return ("contact.html");
 	}
 }
