@@ -1,0 +1,59 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Skill path variable</title>
+</head>
+<style>
+.Table {
+	display: table;
+}
+
+.Title {
+	display: table-caption;
+	text-align: center;
+	font-weight: bold;
+	font-size: larger;
+}
+
+.Heading {
+	display: table-row;
+	font-weight: bold;
+	text-align: center;
+}
+
+.Row {
+	display: table-row;
+}
+
+.Cell {
+	display: table-cell;
+	border: solid;
+	border-width: thin;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+</style>
+
+<body>
+	<b><u>Skills:</u></b>
+	<br />
+	<br />
+</body>
+
+<div th:each="skill : ${EXPERT}" class="Row" th:if="${display} == 'EXPERT'">
+	<div class="Cell">
+		<h2 th:text="${skill.name}"></h2>
+	</div>
+	<div class="Cell">
+		<h2 th:text="${skill.level}"></h2>
+	</div>
+</div>
+<div th:each="skill : ${INTERMEDIATE}" class="Row" th:if="${display} == 'INTERMEDIATE'">
+	<div class="Cell">
+		<h2 th:text="${skill.name}"></h2>
+	</div>
+	<div class="Cell">
+		<h2 th:text="${skill.level}"></h2>
+	</div>
+</div>
+</html>

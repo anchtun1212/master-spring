@@ -1,7 +1,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-	<title>Skill page</title>
+	<title>Skill request param</title>
 	<!-- just set style.css file under static folder -->
 	<link rel="stylesheet" href="style.css">
 </head>
@@ -12,7 +12,7 @@
 	<br />
 </body>
 
-<div th:each="skill : ${EXPERT}" class="Row">
+<div th:each="skill : ${EXPERT}" class="Row" th:if="${level} == 'EXPERT'">
 	<div class="Cell">
 		<h2 th:text="${skill.name}"></h2>
 	</div>
@@ -20,7 +20,7 @@
 		<h2 th:text="${skill.level}"></h2>
 	</div>
 </div>
-<div th:each="skill : ${INTERMEDIATE}" class="Row">
+<div th:each="skill : ${INTERMEDIATE}" class="Row" th:if="${level} == 'INTERMEDIATE'">
 	<div class="Cell">
 		<h2 th:text="${skill.name}"></h2>
 	</div>
@@ -28,5 +28,4 @@
 		<h2 th:text="${skill.level}"></h2>
 	</div>
 </div>
-
 </html>
