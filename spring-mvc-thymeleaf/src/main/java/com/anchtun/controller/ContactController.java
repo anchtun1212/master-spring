@@ -1,10 +1,7 @@
 package com.anchtun.controller;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -12,10 +9,22 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.anchtun.model.Contact;
 
+import lombok.extern.slf4j.Slf4j;
+
+/**
+ * 
+ * @Slf4j annotation will replace this line of code:
+ * public static Logger log = LoggerFactory.getLogger(ContactController.class);
+ *
+ */
+@Slf4j
 @Controller
 public class ContactController {
 
-	Logger log = LoggerFactory.getLogger(ContactController.class);
+	/**
+	 * will be replaced by @Slf4j annotation
+	 */
+	//public static Logger log = LoggerFactory.getLogger(ContactController.class);
 
 	@RequestMapping("/contact")
 	public String homePage(Model model) {
