@@ -36,9 +36,12 @@ public class ContactController {
 	 * send data using @RequestParam
 	 */
 	@RequestMapping(value = "/saveMsg", method = RequestMethod.POST)
-	public ModelAndView saveMsg(@RequestParam String fullName, @RequestParam String mobile,
+	public ModelAndView saveMsg(@RequestParam String fullName, 
+			@RequestParam String email,
+			@RequestParam String mobile,
 			@RequestParam String subject) {
 		log.info("fullName=" + fullName);
+		log.info("email=" + email);
 		log.info("mobile=" + mobile);
 		log.info("subject=" + subject);
 		return new ModelAndView("redirect:/contact");

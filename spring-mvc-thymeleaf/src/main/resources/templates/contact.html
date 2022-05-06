@@ -14,6 +14,9 @@
 	<form th:action="@{/saveMsg}" method="post">
 		<input type="text" id="fullName" name="fullName" placeholder="Please enter your full name"></input>
 		<br/><br/>
+		<!-- Client side validation: can be bypassed by the end user by simple inspect page -->
+		<input type="email" id="email" name="email" placeholder="Please enter your email" required="required"></input>
+		<br/><br/>
 		<input type="text" id="mobile" name="mobile" placeholder="Please enter your mobile"></input>
 		<br/><br/>
 		<input type="text" id="subject" name="subject" placeholder="Please enter your subject"></input>
@@ -24,6 +27,9 @@
 	<h1>send data using POJO class</h1>
 	<form th:action="@{/saveMsg2}" method="post">
 		<input type="text" id="fullName2" name="fullName2" placeholder="Please enter your full name"></input>
+		<br/><br/>
+		<!-- Client side validation: can be bypassed by the end user by simple inspect page -->
+		<input type="email" id="email2" name="email2" placeholder="Please enter your email" required="required"></input>
 		<br/><br/>
 		<input type="text" id="mobile2" name="mobile2" placeholder="Please enter your mobile"></input>
 		<br/><br/>
