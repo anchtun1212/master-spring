@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Skill page</title>
+	<!-- just set style.css file under static folder -->
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+	<b><u>Skills:</u></b>
+	<br />
+	<br />
+</body>
+
+<div th:each="skill : ${skills}" class="Row">
+	<div class="Cell">
+		<h2 th:text="${skill.name}"></h2>
+	</div>
+	<div class="Cell">
+		<h2 th:text="${skill.level}"></h2>
+	</div>
+</div>
+
+</html>

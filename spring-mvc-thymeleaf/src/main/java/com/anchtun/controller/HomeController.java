@@ -11,7 +11,7 @@ public class HomeController {
 	// Model in an interface inside spring mvc which will act as an container
 	// between UI and backend code
 	public String homePage(Model model) {
-		model.addAttribute("userName", "Anchtun");
+		model.addAttribute("userName", "Brother/Sister");
 		return "home.html";
 	}
 
