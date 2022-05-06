@@ -6,4 +6,6 @@
 
 3- Using @RequestParam and @PathVariable
 
-4- Validation the input using Java Bean & Hibernate Validators
+4- Validation the input using Java Bean
+
+5- Beans Web scopes
