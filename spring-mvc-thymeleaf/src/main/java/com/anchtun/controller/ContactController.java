@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.anchtun.model.Contact;
+import com.anchtun.service.ContactService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -25,6 +26,13 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 public class ContactController {
 
+	private final ContactService contactService;
+	
+	// no need to add @Autowired because there is only one constructor
+	public ContactController(ContactService contactService) {
+		this.contactService = contactService;
+	}
+	
 	/**
 	 * will be replaced by @Slf4j annotation
 	 */
@@ -34,6 +42,9 @@ public class ContactController {
 	public String homePage(Model model) {
 		// add this line to use this attribute for validation
 		model.addAttribute("contact", new Contact());
+		contactService.saveContact();
+		contactService.setCounter(contactService.getCounter() + 1);
+		log.info("Number of contact submitted:" + contactService.getCounter());
 		return "contact.html";
 	}
 
