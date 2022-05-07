@@ -12,3 +12,5 @@ Please follow this:
 5- spring-boot-web-app
 
 6- spring-mvc-thymeleaf
+
+7- spring-security
