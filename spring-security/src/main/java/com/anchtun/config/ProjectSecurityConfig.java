@@ -1,6 +1,7 @@
 package com.anchtun.config;
 
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
@@ -36,8 +37,9 @@ public class ProjectSecurityConfig extends WebSecurityConfigurerAdapter {
 		.mvcMatchers("/home").permitAll()
 		.mvcMatchers("/aboutme").permitAll()
 		.mvcMatchers("/skill/**").permitAll()
-		.mvcMatchers("/skill-req-param").permitAll() 
-		.mvcMatchers("/saveMsg").permitAll()
+		.mvcMatchers("/skill-req-param").permitAll()
+		// use the second constructor of mvcMatchers
+		.mvcMatchers(HttpMethod.POST, "/saveMsg").permitAll()
 		.mvcMatchers("/saveMsg2").permitAll()
 		// Allow this request only for authenticated users 
 		.mvcMatchers("/contact").authenticated()
