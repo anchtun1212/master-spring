@@ -13,3 +13,5 @@
 # In this project there is:
 
    1- Add spring-boot-starter-security dependency and start the application.
+   
+   2- Configure custom credentials (for POC purpose only).
