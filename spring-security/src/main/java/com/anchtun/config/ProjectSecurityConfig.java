@@ -26,5 +26,23 @@ public class ProjectSecurityConfig extends WebSecurityConfigurerAdapter {
 		.and().formLogin()// html form (formLogin)
 		.and().httpBasic();// like Rest APIs (httpBasic)*/
 		
+		http
+		// thymeleaf will disable csrf by default, so you need to add this line of code if you are using (angular, react...)
+		// because spring will block all update requests POST/PUT will be stopped with 403 error
+		.csrf().disable()
+		// this line is mandatory for any kind of configuration  
+		.authorizeRequests()
+		// will configure page by page
+		.mvcMatchers("/home").permitAll()
+		.mvcMatchers("/aboutme").permitAll()
+		.mvcMatchers("/skill/**").permitAll()
+		.mvcMatchers("/skill-req-param").permitAll() 
+		.mvcMatchers("/saveMsg").permitAll()
+		.mvcMatchers("/saveMsg2").permitAll()
+		// Allow this request only for authenticated users 
+		.mvcMatchers("/contact").authenticated()
+		.and().formLogin()
+		.and().httpBasic();
+		
 	}
 }

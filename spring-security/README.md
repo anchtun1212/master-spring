@@ -17,3 +17,5 @@
    2- Configure custom credentials (for POC purpose only).
    
    3- Configure using: permitAll() / denyAll()
+   
+   4- CSRF (Cross-Site Request Forgery)
