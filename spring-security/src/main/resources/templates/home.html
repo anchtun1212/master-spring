@@ -1,0 +1,26 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>Home page</title>
+</head>
+
+<body>
+	<h1 th:text="'Hello ' + ${userName} +'!!! to Anchtun web application'"></h1>
+</body>
+
+<b><a th:href=@{/skill} target="_blank">Skills</a></b> 
+<br/><br/>
+<b><a th:href=@{/skill-req-param(level='EXPERT')} target="_blank">Skills using @RequestParam / EXPERT only</a></b> 
+<br/><br/>
+<b><a th:href=@{/skill-req-param(level='INTERMEDIATE')} target="_blank">Skills using @RequestParam / INTERMEDIATE only</a></b> 
+<br/><br/>
+<b><a th:href=@{/skill/EXPERT} target="_blank">Skills using @PathVariable / EXPERT only</a></b> 
+<br/><br/>
+<b><a th:href=@{/skill/INTERMEDIATE} target="_blank">Skills using @PathVariable / INTERMEDIATE only</a></b> 
+<br/><br/>
+<b><a th:href=@{/contact} target="_blank">Contact me</a></b> 
+<br/><br/>
+<b><a th:href=@{/aboutme} target="_blank">About me</a></b> 
+
+
+</html>
