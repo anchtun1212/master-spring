@@ -34,8 +34,11 @@ public class ProjectSecurityConfig extends WebSecurityConfigurerAdapter {
 		// this line is mandatory for any kind of configuration  
 		.authorizeRequests()
 		// will configure page by page
-		.mvcMatchers("/home").permitAll()
-		.mvcMatchers("/aboutme").permitAll()
+		// we can use one of those three matchers: mvcMatchers/antMatchers/regexMatchers
+		// use regexMatchers
+		.regexMatchers("/home").permitAll()
+		// use antMatchers
+		.antMatchers("/aboutme").permitAll()
 		.mvcMatchers("/skill/**").permitAll()
 		.mvcMatchers("/skill-req-param").permitAll()
 		// use the second constructor of mvcMatchers
