@@ -1,0 +1,27 @@
+<html>
+
+<head>
+	<title>Login Page</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<center>
+    <h2>Please enter your credentials</h2>
+    <div>
+	 <form action="/login" method="post">
+           <div>
+             <li class="alert alert-danger" role="alert" th:if="${!#strings.isEmpty(errorMessage)}"
+                      th:text="${errorMessage}" />
+                 <input type="text" name="username" id="username" placeholder="Username"/>
+                 <input type="password" name="password" id="password" placeholder="Password"/>
+            </div>
+            <button>Log In</button>
+      </form>
+	</div>
+</center>	
+
+</body>
+
+</html>

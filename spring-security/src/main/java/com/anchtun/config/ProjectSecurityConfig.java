@@ -38,7 +38,8 @@ public class ProjectSecurityConfig extends WebSecurityConfigurerAdapter {
 		// will configure page by page
 		// we can use one of those three matchers: mvcMatchers/antMatchers/regexMatchers
 		// use regexMatchers
-		.regexMatchers("/home").permitAll()
+		// uses can go to the home page only if they are authenticated
+		.regexMatchers("/home").authenticated()
 		// use antMatchers
 		.antMatchers("/aboutme").permitAll()
 		.mvcMatchers("/skill/**").permitAll()
@@ -47,8 +48,15 @@ public class ProjectSecurityConfig extends WebSecurityConfigurerAdapter {
 		.mvcMatchers(HttpMethod.POST, "/saveMsg").permitAll()
 		.mvcMatchers("/saveMsg2").permitAll()
 		// Allow this request only for authenticated users 
-		.mvcMatchers("/contact").authenticated()
+		//.mvcMatchers("/contact").authenticated()
+		.mvcMatchers("/contact").permitAll()
+		.mvcMatchers("login").permitAll()
 		.and().formLogin()
+		// configure our custom login page (not login page provided by default from Spring)
+		.loginPage("/login").defaultSuccessUrl("/home").failureUrl("/login?error=true").permitAll()
+		.and().logout().logoutSuccessUrl("/login?logout=true")
+		// after logout = true so invalidateHttpSession = true
+		.invalidateHttpSession(true).permitAll()
 		.and().httpBasic();
 	}
 	

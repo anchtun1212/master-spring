@@ -6,6 +6,8 @@
 
 <body>
 	<h1 th:text="'Hello ' + ${userName} +'!!! to Anchtun web application'"></h1>
+	<br/>
+    <h1 th:text="'You are authenticated as ' + ${roles}"></h1>
 </body>
 
 <b><a th:href=@{/skill} target="_blank">Skills</a></b> 
@@ -21,6 +23,8 @@
 <b><a th:href=@{/contact} target="_blank">Contact me</a></b> 
 <br/><br/>
 <b><a th:href=@{/aboutme} target="_blank">About me</a></b> 
+<br/><br/>
+<b><a style="color: red" th:href=@{/logout}>Logout</a></b> 
 
 
 </html>
