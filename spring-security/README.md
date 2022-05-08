@@ -19,3 +19,5 @@
    3- Configure using: permitAll() / denyAll()
    
    4- CSRF (Cross-Site Request Forgery)
+   
+   5 - In-merory authentication
