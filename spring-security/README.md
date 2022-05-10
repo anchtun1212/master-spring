@@ -20,6 +20,8 @@
    
    4- CSRF (Cross-Site Request Forgery)
    
-   5 - In-merory authentication
+   5- In-merory authentication
    
    6- Implement Login & Logout inside the web application
+   
+   7- Thymeleaf extras springsecurity5

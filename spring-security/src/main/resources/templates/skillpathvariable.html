@@ -1,4 +1,5 @@
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
 <head>
 	<title>Skill path variable</title>
@@ -7,25 +8,28 @@
 </head>
 
 <body>
+    <div sec:authorize="isAuthenticated()">
 	<b><u>Skills:</u></b>
 	<br />
 	<br />
-</body>
 
-<div th:each="skill : ${EXPERT}" class="Row" th:if="${display} == 'EXPERT'">
-	<div class="Cell">
-		<h2 th:text="${skill.name}"></h2>
+	<div th:each="skill : ${EXPERT}" class="Row" th:if="${display} == 'EXPERT'">
+		<div class="Cell">
+			<h2 th:text="${skill.name}"></h2>
+		</div>
+		<div class="Cell">
+			<h2 th:text="${skill.level}"></h2>
+		</div>
 	</div>
-	<div class="Cell">
-		<h2 th:text="${skill.level}"></h2>
+	<div th:each="skill : ${INTERMEDIATE}" class="Row" th:if="${display} == 'INTERMEDIATE'">
+		<div class="Cell">
+			<h2 th:text="${skill.name}"></h2>
+		</div>
+		<div class="Cell">
+			<h2 th:text="${skill.level}"></h2>
+		</div>
 	</div>
-</div>
-<div th:each="skill : ${INTERMEDIATE}" class="Row" th:if="${display} == 'INTERMEDIATE'">
-	<div class="Cell">
-		<h2 th:text="${skill.name}"></h2>
 	</div>
-	<div class="Cell">
-		<h2 th:text="${skill.level}"></h2>
-	</div>
-</div>
+	
+</body>
 </html>

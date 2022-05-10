@@ -1,4 +1,5 @@
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
 <head>
 	<title>Contact page</title>
@@ -6,6 +7,9 @@
 </head>
 
 <body>
+
+	<div sec:authorize="isAuthenticated()">
+	
 	<div th:if="${#fields.errors('contact.*')}">
 		<ul>
 			<li class="alert alert-danger" role="alert" th:each="error : ${#fields.errors('contact.*')}" th:text="${error}">
@@ -33,6 +37,7 @@
 		<input type="submit"></button>		
 	</form>
 	
+	<div sec:authorize="hasRole('ROLE_ADMIN')">
 	<h1>send data using POJO class</h1>
 	<form th:action="@{/saveMsg2}" method="post">
 		<input type="text" id="fullName2" name="fullName2" placeholder="Please enter your full name"></input>
@@ -45,6 +50,9 @@
 		<br/><br/>
 		<input type="submit"></button>		
 	</form>
+	</div>
+	
+	</div>
 </body>
 
 </html>
