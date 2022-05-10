@@ -23,5 +23,15 @@ public class HomeController {
 		model.addAttribute("roles", auth.getAuthorities().toString());
 		return "home.html";
 	}
+	
+	@RequestMapping(value = "/nullPointerException")
+	public String homeNullPointerPage() {
+		throw new NullPointerException("NullPointerException happened! Please check your data!");
+	}
+	
+	@RequestMapping(value = "/illegalArgumentException")
+	public String homeIllegalArgsPage() {
+		throw new IllegalArgumentException("IllegalArgumentException happened! Please check your data!");
+	}
 
 }

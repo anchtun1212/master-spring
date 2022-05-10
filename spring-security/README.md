@@ -25,3 +25,5 @@
    6- Implement Login & Logout inside the web application
    
    7- Thymeleaf extras springsecurity5
+   
+   8- @ControllerAdvice & @ExceptionHandler
