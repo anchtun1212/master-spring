@@ -27,3 +27,5 @@
    7- Thymeleaf extras springsecurity5
    
    8- @ControllerAdvice & @ExceptionHandler
+   
+   9- Solution for CSRF attack

@@ -32,7 +32,10 @@ public class ProjectSecurityConfig extends WebSecurityConfigurerAdapter {
 		http
 		// thymeleaf will disable csrf by default, so you need to add this line of code if you are using (angular, react...)
 		// because spring will block all update requests POST/PUT will be stopped with 403 error
-		.csrf().disable()
+		// not recommended approach
+		//.csrf().disable()
+		// here we disable csrf for all web application but enable it for this specific action
+		.csrf().ignoringAntMatchers("/saveMsg").and()
 		// this line is mandatory for any kind of configuration  
 		.authorizeRequests()
 		// will configure page by page

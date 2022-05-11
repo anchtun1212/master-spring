@@ -8,8 +8,6 @@
 
 <body>
 
-	<div sec:authorize="isAuthenticated()">
-	
 	<div th:if="${#fields.errors('contact.*')}">
 		<ul>
 			<li class="alert alert-danger" role="alert" th:each="error : ${#fields.errors('contact.*')}" th:text="${error}">
@@ -52,7 +50,6 @@
 	</form>
 	</div>
 	
-	</div>
 </body>
 
 </html>
