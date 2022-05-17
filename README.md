@@ -14,3 +14,5 @@ Please follow this:
 6- spring-mvc-thymeleaf
 
 7- spring-security
+
+8- spring-boot-h2-database-spring-jdbc
