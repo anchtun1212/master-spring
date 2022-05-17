@@ -1,0 +1,13 @@
+<html xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+	<title>Error page</title>
+</head>
+
+<body>
+	<p th:text="'Error happened: ' + ${errMsg}">
+	<a th:href="@{/home}">Home page</a>
+	</p>
+</body>
+
+</html>
