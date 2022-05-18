@@ -1,6 +1,7 @@
 package com.anchtun.config;
 
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -35,7 +36,7 @@ public class ProjectSecurityConfig extends WebSecurityConfigurerAdapter {
 		// not recommended approach
 		//.csrf().disable()
 		// here we disable csrf for all web application but enable it for this specific action
-		.csrf().ignoringAntMatchers("/saveMsg").and()
+		.csrf().ignoringAntMatchers("/saveMsg").ignoringAntMatchers("/h2-console/**").and()
 		// this line is mandatory for any kind of configuration  
 		.authorizeRequests()
 		// will configure page by page
@@ -54,6 +55,7 @@ public class ProjectSecurityConfig extends WebSecurityConfigurerAdapter {
 		//.mvcMatchers("/contact").authenticated()
 		.mvcMatchers("/contact").permitAll()
 		.mvcMatchers("login").permitAll()
+		.antMatchers("/h2-console/**").permitAll()
 		.and().formLogin()
 		// configure our custom login page (not login page provided by default from Spring)
 		.loginPage("/login").defaultSuccessUrl("/home").failureUrl("/login?error=true").permitAll()
@@ -61,6 +63,9 @@ public class ProjectSecurityConfig extends WebSecurityConfigurerAdapter {
 		// after logout = true so invalidateHttpSession = true
 		.invalidateHttpSession(true).permitAll()
 		.and().httpBasic();
+		
+		// H2 console use frame option: not recommended but used only to use H2 database for POC / or test purpose only
+		http.headers().frameOptions().disable();
 	}
 	
 	// In-merory authentication: NEVER EVER use in-memory authentication for PROD (only use for POC)

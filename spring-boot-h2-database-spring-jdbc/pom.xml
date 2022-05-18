@@ -48,6 +48,11 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
+		<!-- Spring Jdbc -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-jdbc</artifactId>
+		</dependency>
 		<!-- H2 Database-->
 		<dependency>
 			<groupId>com.h2database</groupId>
@@ -57,8 +62,10 @@
 			     To instruct maven we only want these dependecies at runtime, 
 			     we add the scope tag for the value "runtime". -->
 			<scope>runtime</scope>
+			<!--Use a pre-2019 version of the H2 database dependency that auto-creates the database every time you run 
+			your standalone application -->
+			<version>1.4.193</version>
 		</dependency>
-
 
 		<!--default test starter added by spring boot when you generate project from start.spring.io-->
 		<dependency>

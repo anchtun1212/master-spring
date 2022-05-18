@@ -2,8 +2,6 @@ package com.anchtun.service;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.annotation.ApplicationScope;
-import org.springframework.web.context.annotation.RequestScope;
-import org.springframework.web.context.annotation.SessionScope;
 
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
