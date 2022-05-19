@@ -1,6 +1,7 @@
 package com.anchtun.service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -38,6 +39,10 @@ public class ContactService {
 			log.info(contact.toString());
 		}
 		return isSaved;
+	}
+
+	public List<Contact> findMsgsByStatus(String status) {
+		return contactRepository.findMsgsByStatus(status);
 	}
 
 }

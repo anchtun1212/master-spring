@@ -14,6 +14,8 @@
 	<br/>
     <h1 th:text="'You are authenticated as ' + ${roles}"></h1>
 
+	<b><a th:href=@{/messages} target="_blank" sec:authorize="hasRole('ROLE_ADMIN')">Messages</a></b> 
+	<br/><br/>
 	<b><a th:href=@{/skill} target="_blank">Skills</a></b> 
 	<br/><br/>
 	<b><a th:href=@{/skill-req-param(level='EXPERT')} target="_blank">Skills using @RequestParam / EXPERT only</a></b> 
