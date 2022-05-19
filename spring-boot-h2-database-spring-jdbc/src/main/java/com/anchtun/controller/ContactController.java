@@ -41,10 +41,8 @@ public class ContactController {
 	@RequestMapping("/contact")
 	public String homePage(Model model) {
 		// add this line to use this attribute for validation
-		model.addAttribute("contact", new Contact());
-		contactService.saveContact();
-		contactService.setCounter(contactService.getCounter() + 1);
-		log.info("Number of contact submitted:" + contactService.getCounter());
+		Contact contact = new Contact();
+		model.addAttribute("contact", contact);
 		return "contact.html";
 	}
 
@@ -78,9 +76,11 @@ public class ContactController {
 	public String saveMsg2(@Valid @ModelAttribute("contact") Contact contact, Errors errors) {
 		if (errors.hasErrors()) {
 			log.error("Contact form validation failed due to: " + errors.toString());
-		} else {
-			log.info(contact.toString());
+			return ("contact.html");
 		}
-		return ("contact.html");
+		
+		contactService.saveContact(contact);
+
+		return ("redirect:/contact");
 	}
 }

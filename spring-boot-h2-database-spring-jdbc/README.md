@@ -11,3 +11,10 @@
    In our case: `jdbc:h2:mem:testdb`
 
    Then test your connection
+   
+# In this project:
+
+1- Configure and use H2 database
+
+2- Using JdbcTemplate
+   

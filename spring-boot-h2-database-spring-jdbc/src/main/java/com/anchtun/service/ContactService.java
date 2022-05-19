@@ -1,33 +1,43 @@
 package com.anchtun.service;
 
+import java.time.LocalDateTime;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.annotation.ApplicationScope;
+
+import com.anchtun.constants.Constants;
+import com.anchtun.model.Contact;
+import com.anchtun.repository.ContactRepository;
 
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Service
-/**
- * 
- * Please run the application then try to change the web scopes @RequestScope, @SessionScope, @ApplicationScope
- * and see the log: log.info("Number of contact submitted:" + contactService.getCounter()); in ContactController class
- * you will understand
- */
-//@RequestScope
-//@SessionScope
 @ApplicationScope
 @Data
 public class ContactService {
 
-	private int counter = 0;
-	
+	@Autowired
+	private ContactRepository contactRepository;
+
 	public ContactService() {
 		log.info("Contact service Bean initialized");
 	}
-	
-	public void saveContact() {
-		log.info("Contact saved successfully");
+
+	public boolean saveContact(Contact contact) {
+		boolean isSaved = false;
+		contact.setStatus(Constants.OPEN);
+		contact.setCreatedBy(Constants.ANONYMOUS);
+		contact.setCreatedAt(LocalDateTime.now());
+		int result = contactRepository.saveContactMsg(contact);
+		if (result > 0) {
+			isSaved = true;
+			log.info("Contact saved successfully");
+			log.info(contact.toString());
+		}
+		return isSaved;
 	}
 
 }

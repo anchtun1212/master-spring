@@ -14,8 +14,10 @@ import lombok.Data;
  *
  */
 @Data
-public class Contact {
+public class Contact extends BaseEntity {
 
+	private int contactId;
+	
 	/**
 	 * Bean validation
 	 * @NotNull: checks if a given field is not null but allows empty values & zero elements inside collections.
@@ -37,6 +39,9 @@ public class Contact {
 	@NotBlank(message = "Email must not be blank")
 	@Email(message = "Please enter a valid email")
 	private String email2;
+	
+	// mean message open or close
+	private String status;
 
 	/**
 	 * lombok @Data by default generate toString, but we need to override it
