@@ -17,4 +17,7 @@
 1- Configure and use H2 database
 
 2- Using JdbcTemplate
+
+3- Implementing AOP
    
+4- Using NamedParameterJdbcTemplate

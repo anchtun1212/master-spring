@@ -1,0 +1,27 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+	<title>Skill from H2 Database page</title>
+	<!-- just set style.css file under static folder -->
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div sec:authorize="isAuthenticated()">
+	<b><u>Skills:</u></b>
+	<br />
+	<br />
+
+	<div th:each="skill : ${skillsH2List}" class="Row">
+		<div class="Cell">
+			<h2 th:text="${skill.name}"></h2>
+		</div>
+		<div class="Cell">
+			<h2 th:text="${skill.level}"></h2>
+		</div>
+	</div>
+	</div>
+	
+</body>
+</html>

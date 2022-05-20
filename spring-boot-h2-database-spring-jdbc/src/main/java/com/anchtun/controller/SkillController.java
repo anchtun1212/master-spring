@@ -7,17 +7,25 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.anchtun.constants.Constants;
 import com.anchtun.enums.SkillLevel;
 import com.anchtun.model.Skill;
+import com.anchtun.service.SkillService;
 
 @Controller
 public class SkillController {
+	
+	@Autowired
+	private SkillService skillService;
 
 	@GetMapping("/skill")
 	public String skillPage(Model model) {
@@ -87,5 +95,21 @@ public class SkillController {
 
 		}
 		return "skillpathvariable.html";
+	}
+	
+	@RequestMapping("/skillH2")
+	public ModelAndView skillH2(Model model) {
+		List<Skill> skillsH2List = skillService.findSkills();
+		ModelAndView modelAndView = new ModelAndView("skillsH2.html");
+		modelAndView.addObject("skillsH2List", skillsH2List);
+		return modelAndView;
+	}
+	
+	@RequestMapping("/skillByLevelH2")
+	public ModelAndView skillByLevelH2(Model model) {
+		List<Skill> skillsH2ByLevel = skillService.skillByLevelH2(Constants.INTERMEDIATE);
+		ModelAndView modelAndView = new ModelAndView("skillsH2ByLevel.html");
+		modelAndView.addObject("skillsH2ByLevel", skillsH2ByLevel);
+		return modelAndView;
 	}
 }

@@ -35,8 +35,6 @@ public class ContactService {
 		int result = contactRepository.saveContactMsg(contact);
 		if (result > 0) {
 			isSaved = true;
-			log.info("Contact saved successfully");
-			log.info(contact.toString());
 		}
 		return isSaved;
 	}
@@ -45,13 +43,13 @@ public class ContactService {
 		return contactRepository.findMsgsByStatus(status);
 	}
 
-	public void updateMsgStatus(int contactId, String updatedBy) {
+	public boolean updateMsgStatus(int contactId, String updatedBy) {
 		boolean isUpdated = false;
 		int result = contactRepository.updateMsgStatus(contactId, updatedBy, Constants.CLOSE);
 		if (result > 0) {
 			isUpdated = true;
 		}
-
+		return isUpdated;
 	}
 
 }

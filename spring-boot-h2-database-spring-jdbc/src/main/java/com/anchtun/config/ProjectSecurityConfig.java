@@ -56,6 +56,8 @@ public class ProjectSecurityConfig extends WebSecurityConfigurerAdapter {
 		.mvcMatchers("login").permitAll()
 		// only ADMIN can access to the page
 		.antMatchers("/messages").hasRole("ADMIN")
+		.antMatchers("/skillH2").permitAll()
+		.antMatchers("/skillByLevelH2").permitAll()
 		.antMatchers("/h2-console/**").permitAll()
 		.and().formLogin()
 		// configure our custom login page (not login page provided by default from Spring)

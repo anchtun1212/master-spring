@@ -11,7 +11,11 @@ CREATE TABLE IF NOT EXISTS `contact_msg` (
   `updated_by` varchar(50) DEFAULT NULL
 );
 
-CREATE TABLE IF NOT EXISTS `test` (
-  `test_id` int AUTO_INCREMENT  PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS `skill` (
   `name` varchar(100) NOT NULL,
+  `level` varchar(20) NOT NULL,
+  `created_at` TIMESTAMP NOT NULL,
+  `created_by` varchar(50) NOT NULL,
+  `updated_at` TIMESTAMP DEFAULT NULL,
+  `updated_by` varchar(50) DEFAULT NULL
 );
