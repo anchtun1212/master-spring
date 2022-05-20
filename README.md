@@ -18,3 +18,5 @@ Please follow this:
 8- spring-boot-h2-database-spring-jdbc
 
 9- migrate-from-h2-database-to-postgreSQL
+
+10- spring-data-jpa
