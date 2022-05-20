@@ -36,7 +36,7 @@ public class ContactService {
 		contact.setCreatedBy(Constants.ANONYMOUS);
 		contact.setCreatedAt(LocalDateTime.now());
 		Contact result = contactRepository.save(contact);
-		if (Objects.nonNull(result)) {
+		if (Objects.nonNull(result) && result.getContactId() > 0) {
 			isSaved = true;
 		}
 		return isSaved;
