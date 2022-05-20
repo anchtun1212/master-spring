@@ -1,0 +1,30 @@
+<html xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+	<title>Login Page</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!--  div sec:authorize="isAnonymous()" -->
+<center>
+    <h2>Please enter your credentials</h2>
+    <div>
+	 <form th:action="@{/login}" method="post">
+           <div>
+             <li class="alert alert-danger" role="alert" th:if="${!#strings.isEmpty(errorMessage)}"
+                      th:text="${errorMessage}" />
+                 <input type="text" name="username" id="username" placeholder="Username"/>
+                 <input type="password" name="password" id="password" placeholder="Password"/>
+                 <!-- generate csrf token: will be used by all the requests, this should be only in the login page -->
+                 <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+            </div>
+            <button>Log In</button>
+      </form>
+	</div>
+</center>	
+<!--  div -->
+</body>
+
+</html>

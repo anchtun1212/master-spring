@@ -1,0 +1,19 @@
+<html xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+	<title>About me</title>
+</head>
+
+<body>
+    <div sec:authorize="isAuthenticated()">
+	<b>My Name is: Mohamed Aymen Charrada.</b>
+	<br/>
+	<b>I am from Tunisia.</b>
+	<br/>
+	<b>I am an expert software engineer.</b>
+	<br/>
+	<b>You can follow me on <a href="https://www.linkedin.com/in/mohamed-aymen-charrada-33159724" target="_blank">LinkedIn</a></b>
+	</div>
+</body>
+
+</html>

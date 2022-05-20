@@ -1,0 +1,45 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+<title>Home page</title>
+</head>
+
+<body>
+    Logged user: <span sec:authentication="name">Anchtun web application</span>
+    Roles: <span sec:authentication="principal.authorities">[ROLE_USER, ROLE_ADMIN]</span>
+    
+    <div sec:authorize="isAuthenticated()">
+	<h1 th:text="'Hello ' + ${userName} +'!!! to Anchtun web application'"></h1>
+	<br/>
+    <h1 th:text="'You are authenticated as ' + ${roles}"></h1>
+
+	<b><a th:href=@{/messages} target="_blank" sec:authorize="hasRole('ROLE_ADMIN')">Messages</a></b> 
+	<br/><br/>
+	<b><a th:href=@{/skill} target="_blank">Skills</a></b> 
+	<br/><br/>
+	<b><a th:href=@{/skillDB} target="_blank">Skills from PostgreSQL Database</a></b> 
+	<br/><br/>
+	<b><a th:href=@{/skillByLevelDB} target="_blank">Skills from PostgreSQL Database using NamedParameterJdbcTemplate</a></b> 
+	<br/><br/>
+	<b><a th:href=@{/skill-req-param(level='EXPERT')} target="_blank">Skills using @RequestParam / EXPERT only</a></b> 
+	<br/><br/>
+	<b><a th:href=@{/skill-req-param(level='INTERMEDIATE')} target="_blank">Skills using @RequestParam / INTERMEDIATE only</a></b> 
+	<br/><br/>
+	<b><a th:href=@{/skill/EXPERT} target="_blank">Skills using @PathVariable / EXPERT only</a></b> 
+	<br/><br/>
+	<b><a th:href=@{/skill/INTERMEDIATE} target="_blank">Skills using @PathVariable / INTERMEDIATE only</a></b> 
+	<br/><br/>
+	<b><a th:href=@{/nullPointerException} target="_blank">Controller Advice - NullPointerException</a></b> 
+	<br/><br/>
+	<b><a th:href=@{/illegalArgumentException} target="_blank">Controller Advice - IllegalArgumentException</a></b> 
+	<br/><br/>
+	<b><a th:href=@{/contact} target="_blank">Contact me</a></b> 
+	<br/><br/>
+	<b><a th:href=@{/aboutme} target="_blank">About me</a></b> 
+	<br/><br/>
+	<b><a style="color: red" th:href=@{/logout}>Logout</a></b> 
+	</div>
+
+</body>
+</html>

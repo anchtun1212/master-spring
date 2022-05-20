@@ -1,0 +1,55 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+	<title>Contact page</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+	<div th:if="${#fields.errors('contact.*')}">
+		<ul>
+			<li class="alert alert-danger" role="alert" th:each="error : ${#fields.errors('contact.*')}" th:text="${error}">
+			</li>
+		</ul>
+	</div>
+	
+	<b><u>Contact:</u></b>
+	<br/><br/>
+	<b><a href = "mailto: med.aymen.charrada@gmail.com" target="_blank">email: med.aymen.charrada@gmail.com</a></b>
+	<br/><br/>
+	
+	<h1>send data using @RequestParam</h1>
+	<!-- Remove th:action="@{/saveMsg}" to see csrf problem / because thymeleaf handle csrf by default -->
+	<form action="/saveMsg" method="post">
+		<input type="text" id="fullName" name="fullName" placeholder="Please enter your full name"></input>
+		<br/><br/>
+		<!-- Client side validation: can be bypassed by the end user by simple inspect page and change the values/type -->
+		<input type="email" id="email" name="email" placeholder="Please enter your email" required="required"></input>
+		<br/><br/>
+		<input type="text" id="mobile" name="mobile" placeholder="Please enter your mobile"></input>
+		<br/><br/>
+		<input type="text" id="subject" name="subject" placeholder="Please enter your subject"></input>
+		<br/><br/>
+		<input type="submit"></button>		
+	</form>
+	
+	<div sec:authorize="hasRole('ROLE_ADMIN')">
+	<h1>send data using POJO class</h1>
+	<form th:action="@{/saveMsg2}" method="post">
+		<input type="text" id="fullName2" name="fullName2" placeholder="Please enter your full name"></input>
+		<br/><br/>
+		<input type="text" id="email2" name="email2" placeholder="Please enter your email" ></input>
+		<br/><br/>
+		<input type="text" id="mobile2" name="mobile2" placeholder="Please enter your mobile"></input>
+		<br/><br/>
+		<input type="text" id="subject2" name="subject2" placeholder="Please enter your subject"></input>
+		<br/><br/>
+		<input type="submit"></button>		
+	</form>
+	</div>
+	
+</body>
+
+</html>
