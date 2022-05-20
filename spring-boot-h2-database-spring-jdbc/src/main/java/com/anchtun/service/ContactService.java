@@ -45,4 +45,13 @@ public class ContactService {
 		return contactRepository.findMsgsByStatus(status);
 	}
 
+	public void updateMsgStatus(int contactId, String updatedBy) {
+		boolean isUpdated = false;
+		int result = contactRepository.updateMsgStatus(contactId, updatedBy, Constants.CLOSE);
+		if (result > 0) {
+			isUpdated = true;
+		}
+
+	}
+
 }

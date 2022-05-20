@@ -45,4 +45,9 @@ public class ContactRepository {
 		}, new ContactRowMapper());
 	}
 
+	public int updateMsgStatus(int contactId, String updatedBy, String status) {
+		String sql = "update contact_msg set updated_By = ?, status = ? where contact_id = ?";
+		return jdbcTemplate.update(sql, updatedBy, status, contactId);
+	}
+
 }
