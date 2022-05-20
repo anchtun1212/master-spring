@@ -1,0 +1,58 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+	<title>Messages page</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div sec:authorize="hasRole('ROLE_ADMIN')">
+    
+    <div class="Cell">Name</div>
+    <div class="Cell">Email</div>
+    <div class="Cell">Mobile</div>
+    <div class="Cell">Subject</div>
+    <div class="Cell">Status</div>
+    <div class="Cell">Created At</div>
+    <div class="Cell">Created By</div>
+    <div class="Cell">Updated At</div>
+    <div class="Cell">Updated By</div>
+    <div class="Cell">Status</div>
+    <div th:each="msg : ${contactMsgs}" class="Row">
+		<div class="Cell">
+			<h2 th:text="${msg.fullName2}"></h2>
+		</div>
+		<div class="Cell">
+			<h2 th:text="${msg.email2}"></h2>
+		</div>
+		<div class="Cell">
+			<h2 th:text="${msg.mobile2}"></h2>
+		</div>
+		<div class="Cell">
+			<h2 th:text="${msg.subject2}"></h2>
+		</div>
+		<div class="Cell">
+			<h2 th:text="${msg.status}"></h2>
+		</div>
+		<div class="Cell">
+			<h2 th:text="${msg.createdAt}"></h2>
+		</div>
+		<div class="Cell">
+			<h2 th:text="${msg.createdBy}"></h2>
+		</div>
+		<div class="Cell">
+			<h2 th:text="${msg.updatedAt}"></h2>
+		</div>
+		<div class="Cell">
+			<h2 th:text="${msg.updatedBy}"></h2>
+		</div>
+		<div class="Cell">
+			<b><a th:href=@{/closeMsg(id=${msg.contactId})} >CLOSE</a></b>
+		</div>
+	</div>
+	
+	</div>
+	
+</body>
+</html>
