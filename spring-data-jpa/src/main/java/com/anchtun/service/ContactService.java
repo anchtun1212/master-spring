@@ -1,8 +1,8 @@
 package com.anchtun.service;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -33,8 +33,10 @@ public class ContactService {
 	public boolean saveContact(Contact contact) {
 		boolean isSaved = false;
 		contact.setStatus(Constants.OPEN);
-		contact.setCreatedBy(Constants.ANONYMOUS);
-		contact.setCreatedAt(LocalDateTime.now());
+		// will be handled by spring data jpa -auditing
+		// contact.setCreatedBy(Constants.ANONYMOUS);
+		// will be handled by spring data jpa -auditing
+		// contact.setCreatedAt(LocalDateTime.now());
 		Contact result = contactRepository.save(contact);
 		if (Objects.nonNull(result) && result.getContactId() > 0) {
 			isSaved = true;
@@ -47,10 +49,21 @@ public class ContactService {
 	}
 
 	@Transactional
-	public boolean updateMsgStatus(int contactId, String updatedBy) {
+	// updatedBy will be handled by spring data jpa -auditing
+	//public boolean updateMsgStatus(int contactId, String updatedBy) {
+	public boolean updateMsgStatus(int contactId) {
 		boolean isUpdated = false;
-		int result = contactRepository.updateStatus(Constants.CLOSE, updatedBy, contactId);
-		if (result > 0) {
+		// updatedBy will be handled by spring data jpa -auditing
+		// int result = contactRepository.updateStatus(Constants.CLOSE, updatedBy, contactId);
+		
+		Contact result = null;
+		Optional<Contact> contact = contactRepository.findById(contactId);
+		contact.ifPresent(c -> {
+			contact.get().setStatus(Constants.CLOSE);
+			contactRepository.save(contact.get());
+		});
+
+		if (Objects.nonNull(result)) {
 			isUpdated = true;
 			log.info("Contact updated !!!");
 		}

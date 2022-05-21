@@ -15,3 +15,5 @@ Please execute those two scripts: `web_schema.sql` and `web_data.sql`
 # In this project:
 
 1- Migrate from `spring jdbc` to `spring data jpa`.
+
+2- Auditing support.
