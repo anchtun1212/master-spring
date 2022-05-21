@@ -21,13 +21,19 @@ import lombok.Data;
 @EntityListeners(AuditingEntityListener.class)
 public class BaseEntity {
 	
-	// insertable = false mean not be included in the insert statement 
-    /*insert 
-    into
-        contact_msg
-        (created_at, created_by, email, name, mobile_num, status, subject) 
-    values
-        (?, ?, ?, ?, ?, ?, ?)*/
+	// updatable = false mean not be included in the update statement 
+	   /*update
+	       contact_msg 
+	   set
+	       updated_at=?,
+	       updated_by=?,
+	       email=?,
+	       name=?,
+	       mobile_num=?,
+	       status=?,
+	       subject=? 
+	   where
+	       contact_id=?*/
 	@CreatedDate
 	@Column(updatable = false)
 	private LocalDateTime createdAt;
@@ -36,19 +42,13 @@ public class BaseEntity {
 	@Column(updatable = false)
 	private String createdBy;
 
-   // updatable = false mean not be included in the update statement 
-   /*update
-       contact_msg 
-   set
-       updated_at=?,
-       updated_by=?,
-       email=?,
-       name=?,
-       mobile_num=?,
-       status=?,
-       subject=? 
-   where
-       contact_id=?*/
+	// insertable = false mean not be included in the insert statement 
+    /*insert 
+    into
+        contact_msg
+        (created_at, created_by, email, name, mobile_num, status, subject) 
+    values
+        (?, ?, ?, ?, ?, ?, ?)*/
 	@LastModifiedDate
 	@Column(insertable = false)
 	private LocalDateTime updatedAt;

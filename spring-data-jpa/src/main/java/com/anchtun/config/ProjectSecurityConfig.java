@@ -34,7 +34,9 @@ public class ProjectSecurityConfig extends WebSecurityConfigurerAdapter {
 		// not recommended approach
 		//.csrf().disable()
 		// here we disable csrf for all web application but enable it for this specific action
-		.csrf().ignoringAntMatchers("/saveMsg").and()
+		.csrf().ignoringAntMatchers("/saveMsg")
+		// disable csrf for all public paths because there is no secure data
+		.ignoringAntMatchers("/public/**").and()
 		// this line is mandatory for any kind of configuration  
 		.authorizeRequests()
 		// will configure page by page
@@ -47,12 +49,14 @@ public class ProjectSecurityConfig extends WebSecurityConfigurerAdapter {
 		.mvcMatchers("/saveMsg2").permitAll()
 		// Allow this request only for authenticated users 
 		//.mvcMatchers("/contact").authenticated()
-		.mvcMatchers("/contact").permitAll()
+		.mvcMatchers("/contact").authenticated()
 		.mvcMatchers("login").permitAll()
 		// only ADMIN can access to the page
 		.antMatchers("/messages").hasRole("ADMIN")
 		.antMatchers("/skillDB").permitAll()
 		.antMatchers("/skillByLevelDB").permitAll()
+		// permit all that are under public: register page,...
+		.antMatchers("/public/**").permitAll()
 		.and().formLogin()
 		// configure our custom login page (not login page provided by default from Spring)
 		.loginPage("/login").defaultSuccessUrl("/home").failureUrl("/login?error=true").permitAll()

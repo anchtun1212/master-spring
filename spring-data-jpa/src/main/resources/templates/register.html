@@ -1,0 +1,39 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+	<title>Register page</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div th:if="${#fields.errors('person.*')}">
+		<ul>
+			<li class="alert alert-danger" role="alert" th:each="error : ${#fields.errors('person.*')}" th:text="${error}">
+			</li>
+		</ul>
+	</div>
+
+	<div>
+	<h1>Personal information:</h1>
+	<form th:action="@{/public/createuser}" method="post" th:object="${person}">
+		<input type="text" id="name" name="name" th:object="${name}" placeholder="Please enter your full name"></input>
+		<br/><br/>
+		<input type="text" id="mobileNumber" name="mobileNumber" th:object="${mobileNumber}" placeholder="Please enter your mobile"></input>
+		<br/><br/>
+		<input type="text" id="email" name="email" th:object="${email}" placeholder="Please enter your email" ></input>
+		<br/><br/>
+		<input type="text" id="confirmEmail" name="confirmEmail" th:object="${confirmEmail}" placeholder="Please enter your confirm email" ></input>
+		<br/><br/>
+		<input type="password" id="password" name="password" th:object="${password}" placeholder="Please enter your password"></input>
+		<br/><br/>
+		<input type="password" id="confirmPassword" name="confirmPassword" th:object="${confirmPassword}" placeholder="Please enter your confirm password"></input>
+		<br/><br/>
+		<input type="submit" value="Register"></input>		
+	</form>
+	</div>
+	
+</body>
+
+</html>

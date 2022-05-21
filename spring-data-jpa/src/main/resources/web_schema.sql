@@ -19,3 +19,10 @@ CREATE TABLE IF NOT EXISTS skill (
 		updated_at TIMESTAMP DEFAULT NULL,
 		updated_by varchar(50) DEFAULT NULL
 		);
+CREATE TABLE IF NOT EXISTS person (
+	    person_id serial4  PRIMARY KEY,
+		name varchar(100) NOT NULL,
+		mobile_num varchar(10) NOT NULL,
+		email varchar(100) NOT NULL,
+		password varchar(100) NOT NULL
+		);

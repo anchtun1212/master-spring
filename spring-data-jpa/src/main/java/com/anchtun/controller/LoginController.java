@@ -22,15 +22,22 @@ public class LoginController {
 	// RequestMethod are GET & POST because this method will be used for login & logout
 	@RequestMapping(value = { "", "/", "/login" }, method = { RequestMethod.GET, RequestMethod.POST })
 	public String loginPage(@RequestParam(value = "error", required = false) String error,
-			@RequestParam(value = "logout", required = false) String logout, Model model) {
+			@RequestParam(value = "logout", required = false) String logout,
+			@RequestParam(value = "register", required = false) boolean register
+			, Model model) {
 		String errorMessage = null;
+		String successMessage = null;
 		if (error != null) {
 			errorMessage = "Wrong credentials - userName or password are incorrect!";
 		}
 		if (logout != null) {
 			errorMessage = "You are logged out successfully!";
 		}
+		if (register) {
+			successMessage = "Your account was created successfully!";
+		}
 		model.addAttribute("errorMessage", errorMessage);
+		model.addAttribute("successMessage", successMessage);
 		return "login.html";
 	}
 	
