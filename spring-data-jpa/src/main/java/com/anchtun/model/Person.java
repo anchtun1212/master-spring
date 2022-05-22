@@ -1,10 +1,14 @@
 package com.anchtun.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Transient;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -30,7 +34,7 @@ import lombok.Data;
 			message = "Emails do not match"
 			)
 })
-public class Person {
+public class Person extends BaseEntity {
 
 	@Id
 	@Column(name = "person_id")
@@ -67,4 +71,17 @@ public class Person {
 	// to tell spring data jpa to not use this field for all DB operations
 	@Transient
 	private String confirmPassword;
+	
+	// fetch type by default EAGER for ToOne
+	// CascadeType.PERSIST because I can't update or remove or refresh or detach roles
+	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+	// name: which column in Person table, referencedColumnName: which field in Roles entity
+	@JoinColumn(name = "role_id", referencedColumnName = "role_id")
+	private Roles roles;
+	
+	// fetch type by default EAGER for ToOne
+	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL, targetEntity = Address.class)
+	// name: which column in Person table, referencedColumnName: which field in Address entity
+	@JoinColumn(name = "address_id", referencedColumnName = "address_id", nullable = true)
+	private Address address;
 }

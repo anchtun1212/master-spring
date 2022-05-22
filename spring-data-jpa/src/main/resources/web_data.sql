@@ -6,3 +6,6 @@ insert into skill(name, level, created_at, created_by) values ('C','INTERMEDIATE
 insert into skill(name, level, created_at, created_by) values ('Python','INTERMEDIATE', now(), 'Anchtun');
 insert into skill(name, level, created_at, created_by) values ('Linux','INTERMEDIATE', now(), 'Anchtun');
 insert into skill(name, level, created_at, created_by) values ('Docker','INTERMEDIATE', now(), 'Anchtun');
+
+insert into roles (role_name, created_at, created_by) values ('ADMIN',now(), 'Anchtun');
+insert into roles (role_name, created_at, created_by) values ('USER',now(), 'Anchtun');

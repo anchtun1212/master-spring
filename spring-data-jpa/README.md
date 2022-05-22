@@ -19,3 +19,9 @@ Please execute those two scripts: `web_schema.sql` and `web_data.sql`
 2- Auditing support.
 
 3- Define custom validation.
+
+4- OneToOne relationship.
+
+5- Fetch types.
+
+6- Cascade types.
