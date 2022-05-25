@@ -1,9 +1,15 @@
 package com.anchtun.controller;
 
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.anchtun.model.Person;
+import com.anchtun.service.PersonService;
 
 @Controller
 public class HomeController {
@@ -17,10 +23,16 @@ public class HomeController {
 		return "home.html";
 	}*/
 	
+	@Autowired
+	private PersonService personService;
+	
 	@RequestMapping(value = "/home")
-	public String homePage(Authentication auth, Model model) {
+	public String homePage(Authentication auth, Model model, HttpSession httpSession) {
+		// we set the email in the name in AnchtunUsernamePasswordAuthenticationProvider.authenticate
+		Person person = personService.findPersonByEmail(auth.getName());
 		model.addAttribute("userName", auth.getName());
 		model.addAttribute("roles", auth.getAuthorities().toString());
+		httpSession.setAttribute("personLoggedIn", person);
 		return "home.html";
 	}
 	

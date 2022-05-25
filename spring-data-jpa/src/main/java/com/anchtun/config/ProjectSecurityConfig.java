@@ -56,6 +56,8 @@ public class ProjectSecurityConfig extends WebSecurityConfigurerAdapter {
 		.antMatchers("/messages").hasRole("ADMIN")
 		.antMatchers("/skillDB").permitAll()
 		.antMatchers("/skillByLevelDB").permitAll()
+		.mvcMatchers("/profile").authenticated()
+		.mvcMatchers("/updateprofile").authenticated()
 		// permit all that are under public: register page,...
 		.antMatchers("/public/**").permitAll()
 		.and().formLogin()

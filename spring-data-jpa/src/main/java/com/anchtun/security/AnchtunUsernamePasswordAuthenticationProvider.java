@@ -46,7 +46,7 @@ public class AnchtunUsernamePasswordAuthenticationProvider implements Authentica
 		if (personDataMatch) {
 			// I will pass: person.getName() instead of email so  the username will be shown in the UI
 			// will set the password to null for more secure
-			return new UsernamePasswordAuthenticationToken(person.getName(), null, getGrantedAuthorities(person.getRoles()));
+			return new UsernamePasswordAuthenticationToken(person.getEmail(), null, getGrantedAuthorities(person.getRoles()));
 		} else {
 			throw new BadCredentialsException("Bad credentials!");
 		}

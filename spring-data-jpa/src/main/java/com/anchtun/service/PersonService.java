@@ -39,5 +39,13 @@ public class PersonService {
 		}
 		return isSaved;
 	}
-
+	
+	public void savePersonDefault(Person person) {
+		personRepository.save(person);
+	}
+	
+	public Person findPersonByEmail(String email) {
+		return personRepository.readByEmail(email);
+	}
+	
 }

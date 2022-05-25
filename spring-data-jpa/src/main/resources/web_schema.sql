@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS address (
 		address2 varchar(300) NOT NULL,
 		city varchar(50) NOT NULL,
 		state varchar(50) NOT NULL,
-		zip_code int NOT NULL,
+		zip_code varchar(5) NOT NULL,
 		created_at TIMESTAMP NOT NULL,
 		created_by varchar(50) NOT NULL,
 		updated_at TIMESTAMP DEFAULT NULL,
