@@ -8,4 +8,6 @@ import com.anchtun.model.Person;
 @Repository
 public interface PersonRepository extends CrudRepository<Person, Integer> {
 
+	Person readByEmail(String username);
+
 }

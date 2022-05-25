@@ -25,3 +25,5 @@ Please execute those two scripts: `web_schema.sql` and `web_data.sql`
 5- Fetch types.
 
 6- Cascade types.
+
+7- Custom authentication using DB & password Hashing.

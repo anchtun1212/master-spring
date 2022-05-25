@@ -1,10 +1,11 @@
 package com.anchtun.config;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.crypto.password.NoOpPasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
 public class ProjectSecurityConfig extends WebSecurityConfigurerAdapter {
@@ -64,21 +65,11 @@ public class ProjectSecurityConfig extends WebSecurityConfigurerAdapter {
 		// after logout = true so invalidateHttpSession = true
 		.invalidateHttpSession(true).permitAll()
 		.and().httpBasic();
-		
 	}
 	
-	// In-merory authentication: NEVER EVER use in-memory authentication for PROD (only use for POC)
-	// we can add many users as we want
-	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.inMemoryAuthentication()
-		.withUser("aymen").password("aymen12345").roles("USER")
-		.and()
-		.withUser("mohamed").password("mohamed12345").roles("USER", "ADMIN")
-		.and()
-		.withUser("anchtun").password("anchtun123").roles("USER", "ADMIN")
-		.and()
-		// deprecated: not recommended but we will use it only for POC
-		.passwordEncoder(NoOpPasswordEncoder.getInstance());
+	// BCryptPasswordEncoder: Most commonly used for Hashing
+	@Bean
+	PasswordEncoder passwordEncoder() {
+		return new BCryptPasswordEncoder();
 	}
-	
 }
