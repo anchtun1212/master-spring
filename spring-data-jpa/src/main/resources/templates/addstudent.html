@@ -1,0 +1,27 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+	<title>Add Student page</title>
+	<!-- just set style.css file under static folder -->
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+     <div th:if="${#fields.errors('student.*')}">
+		<ul>
+			<li class="alert alert-danger" role="alert" th:each="error : ${#fields.errors('student.*')}" th:text="${error}">
+			</li>
+		</ul>
+	</div>
+	 <div sec:authorize="hasRole('ROLE_ADMIN')">
+	    	<h1>Student:</h1>
+			<form th:action="@{/admin/savestudent}" method="post" th:object="${student}">
+				<label for="email">Email:</label>
+				<input type="text" id="email" name="email" th:field="*{email}" ></input>
+				<input type="submit" value="Add to room"></input>	
+				<b><a th:href=@{/admin/students(id=${classroom.classroomId})} target="_blank">Back</a></b> 
+			</form>
+	 </div>
+</body>
+</html>

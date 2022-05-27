@@ -48,4 +48,8 @@ public class PersonService {
 		return personRepository.readByEmail(email);
 	}
 	
+	public Person findPersonById(Integer id) {
+		return personRepository.getById(id);
+	}
+	
 }

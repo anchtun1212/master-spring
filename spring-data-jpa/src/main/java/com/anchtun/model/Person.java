@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Transient;
 import javax.validation.constraints.Email;
@@ -84,4 +85,9 @@ public class Person extends BaseEntity {
 	// name: which column in Person table, referencedColumnName: which field in Address entity
 	@JoinColumn(name = "address_id", referencedColumnName = "address_id", nullable = true)
 	private Address address;
+	
+	// fetch = FetchType.LAZY but can keep the default eager, optional = true because can be null
+	@ManyToOne(fetch = FetchType.LAZY, optional = true)
+	@JoinColumn(name = "classroom_id", referencedColumnName = "classroom_id", nullable = true)
+	private Classroom classroom;
 }

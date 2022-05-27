@@ -55,3 +55,16 @@ CREATE TABLE IF NOT EXISTS person (
 		foreign key(address_id) references address(address_id)
 		);		
 ALTER TABLE public.person ALTER COLUMN address_id DROP NOT NULL;
+
+CREATE TABLE IF NOT EXISTS classroom (
+	    classroom_id serial4 NOT NULL PRIMARY KEY,
+		name varchar(100) NOT NULL,
+		created_at TIMESTAMP NOT NULL,
+		created_by varchar(50) NOT NULL,
+		updated_at TIMESTAMP DEFAULT NULL,
+		updated_by varchar(50) DEFAULT NULL
+		);	
+
+alter table person add column  classroom_id int null;
+alter table person add constraint fk_person_classroom_id foreign key (classroom_id) references classroom(classroom_id);
+

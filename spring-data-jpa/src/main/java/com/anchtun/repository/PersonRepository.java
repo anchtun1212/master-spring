@@ -10,4 +10,6 @@ public interface PersonRepository extends CrudRepository<Person, Integer> {
 
 	Person readByEmail(String username);
 
+	Person getById(Integer id);
+
 }

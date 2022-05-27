@@ -17,6 +17,8 @@
 	<br/><br/>
 	<b><a th:href=@{/messages} target="_blank" sec:authorize="hasRole('ROLE_ADMIN')">Messages</a></b> 
 	<br/><br/>
+	<b><a th:href=@{/admin/classrooms} target="_blank" sec:authorize="hasRole('ROLE_ADMIN')">Classrooms</a></b> 
+	<br/><br/>
 	<b><a th:href=@{/skillDB} target="_blank">Skills from PostgreSQL Database</a></b> 
 	<br/><br/>
 	<b><a th:href=@{/skillByLevelDB} target="_blank">Skills from PostgreSQL Database using NamedParameterJdbcTemplate</a></b> 

@@ -29,3 +29,7 @@ Please execute those two scripts: `web_schema.sql` and `web_data.sql`
 7- Custom authentication using DB & password Hashing.
 
 8- Building profile web page.
+
+9- OneToMany relationship & ManyToOne relationship.
+
+10- ManyToMany relationship.
