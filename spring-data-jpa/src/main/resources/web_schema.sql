@@ -68,3 +68,20 @@ CREATE TABLE IF NOT EXISTS classroom (
 alter table person add column  classroom_id int null;
 alter table person add constraint fk_person_classroom_id foreign key (classroom_id) references classroom(classroom_id);
 
+CREATE TABLE IF NOT EXISTS course (
+	    course_id serial4 NOT NULL PRIMARY KEY,
+		name varchar(100) NOT NULL,
+		created_at TIMESTAMP NOT NULL,
+		created_by varchar(50) NOT NULL,
+		updated_at TIMESTAMP DEFAULT NULL,
+		updated_by varchar(50) DEFAULT NULL
+		);
+		
+	
+CREATE TABLE IF NOT EXISTS person_courses (
+	    person_id int NOT NULL,
+		course_id int NOT NULL,
+		foreign key(person_id) references person(person_id),
+		foreign key(course_id) references course(course_id),
+		primary key(person_id, course_id)
+		);	

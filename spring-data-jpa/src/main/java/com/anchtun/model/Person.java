@@ -1,5 +1,8 @@
 package com.anchtun.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,6 +11,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Transient;
@@ -90,4 +95,11 @@ public class Person extends BaseEntity {
 	@ManyToOne(fetch = FetchType.LAZY, optional = true)
 	@JoinColumn(name = "classroom_id", referencedColumnName = "classroom_id", nullable = true)
 	private Classroom classroom;
+	
+	@ManyToMany(cascade = CascadeType.PERSIST)
+	@JoinTable(name = "person_courses", 
+	           joinColumns = {@JoinColumn(name = "person_id", referencedColumnName = "person_id") },
+	           inverseJoinColumns = {@JoinColumn(name = "course_id", referencedColumnName = "course_id") }
+	)
+	private Set<Course> courses = new HashSet<>();
 }

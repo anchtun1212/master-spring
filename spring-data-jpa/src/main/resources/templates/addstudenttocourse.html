@@ -2,7 +2,7 @@
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
 <head>
-	<title>Add Student page</title>
+	<title>Add Student To Course page</title>
 	<!-- just set style.css file under static folder -->
 	<link rel="stylesheet" href="style.css">
 </head>
@@ -18,11 +18,11 @@
 	</div>
 	 <div sec:authorize="hasRole('ROLE_ADMIN')">
 	    	<h1>Student:</h1>
-			<form th:action="@{/admin/savestudent}" method="post" th:object="${student}">
+			<form th:action="@{/admin/savestudentcourse}" method="post" th:object="${student}">
 				<label for="email">Email:</label>
 				<input type="text" id="email" name="email" th:field="*{email}" ></input>
-				<input type="submit" value="Add to room"></input>	
-				<b><a th:href=@{/admin/students(id=${classroom.classroomId})} target="_blank">Back</a></b> 
+				<input type="submit" value="Add to course"></input>	
+				<b><a th:href=@{/admin/viewstudents(id=${course.courseId})} target="_blank">Back</a></b> 
 			</form>
 	 </div>
 </body>

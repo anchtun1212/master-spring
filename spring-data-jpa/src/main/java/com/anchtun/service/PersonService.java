@@ -30,6 +30,7 @@ public class PersonService {
 
 	public boolean savePerson(Person person) {
 		boolean isSaved = false;
+		// you can change to ROLE_USER
 		Roles role = rolesRepository.findByRoleName(ROLE_ADMIN);
 		person.setRoles(role);
 		person.setPassword(passwordEncoder.encode(person.getPassword()));

@@ -8,9 +8,9 @@
 
 <body>
 	 <div sec:authorize="hasRole('ROLE_ADMIN')">
-	    <b><a th:href=@{/admin/addstudent} target="_blank" >Add Student</a></b> 
+	    <b><a th:href=@{/admin/addstudenttocourse} target="_blank" >Add Student</a></b> 
 	    <br/><br/>
-	       <label th:text="${classroom.name} + ' List students'" />
+	       <label th:text="${course.name} + ' List students'" />
 	       <br/><br/>
 	       
 	       <div th:each="student : ${students}" class="Row">
@@ -24,12 +24,12 @@
 					<h4 th:text="${student.mobileNumber}"/>
 				</div>
 				<div class="Cell">
-					<b><a th:href=@{/admin/deletestudent(id=${student.personId})} >DELETE</a></b>
+					<b><a th:href=@{/admin/deleteStudentCourse(id=${student.personId})} >DELETE</a></b>
 				</div>
 			</div>
 			
 			<form>
-				<button th:formaction="@{/admin/classrooms}">Back</button>	
+				<button th:formaction="@{/admin/courses}">Back</button>	
 			</form>
 
 	 </div>
