@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.anchtun.model.Course;
@@ -31,4 +32,13 @@ public class CourseService {
 		courseRepository.deleteById(id);
 	}
 
+	// static sorting
+	public List<Course> findByNameOrderByAsc() {
+		return courseRepository.findByOrderByName();
+	}
+
+	// dynamic sorting
+	public List<Course> findAllDynamicSorting() {
+		return (List<Course>) courseRepository.findAll(Sort.by("name").ascending());
+	}
 }

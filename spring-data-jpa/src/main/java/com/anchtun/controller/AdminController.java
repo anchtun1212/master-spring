@@ -149,7 +149,10 @@ public class AdminController {
 	// courses operations
 	@GetMapping("/courses")
 	public String goToCourses(Model model) {
-		List<Course> courses = courseService.findAll();
+		// use static sorting
+		// List<Course> courses = courseService.findByNameOrderByAsc();
+		// use dynamic sorting
+		List<Course> courses = courseService.findAllDynamicSorting();
 		model.addAttribute("courses", courses);
 		return "courses.html";
 	}

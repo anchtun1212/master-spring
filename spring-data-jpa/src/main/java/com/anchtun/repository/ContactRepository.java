@@ -2,6 +2,8 @@ package com.anchtun.repository;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -22,5 +24,8 @@ public interface ContactRepository extends CrudRepository<Contact, Integer> {
 	@Modifying
 	@Query("update Contact c set c.status = ?1, c.updatedBy = ?2 where c.contactId = ?3")
 	int updateStatus(String status, String updatedBy, int contactId);
+	
+	// use pagination and dynamic sorting
+	Page<Contact> findByStatus(String status, Pageable pageable);
 
 }

@@ -17,6 +17,9 @@
 	<br/><br/>
 	<b><a th:href=@{/messages} target="_blank" sec:authorize="hasRole('ROLE_ADMIN')">Messages</a></b> 
 	<br/><br/>
+	<!-- @{/displayMessages/page/0}; 0 mean first page -->
+	<b><a th:href=@{/displayMessages/page/1} target="_blank" sec:authorize="hasRole('ROLE_ADMIN')">Messages Pagination</a></b> 
+	<br/><br/>
 	<b><a th:href=@{/admin/classrooms} target="_blank" sec:authorize="hasRole('ROLE_ADMIN')">Classrooms</a></b> 
 	<br/><br/>
 	<b><a th:href=@{/admin/courses} target="_blank" sec:authorize="hasRole('ROLE_ADMIN')">Courses</a></b> 

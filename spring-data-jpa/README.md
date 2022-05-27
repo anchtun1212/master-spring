@@ -33,3 +33,5 @@ Please execute those two scripts: `web_schema.sql` and `web_data.sql`
 9- OneToMany relationship & ManyToOne relationship.
 
 10- ManyToMany relationship.
+
+11- Sorting & Pagination.
