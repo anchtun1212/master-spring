@@ -13,10 +13,10 @@ public class ContactRowMapper implements RowMapper<Contact> {
 	public Contact mapRow(ResultSet rs, int rowNum) throws SQLException {
 		Contact contact = new Contact();
 		contact.setContactId(rs.getInt("contact_id"));
-		contact.setFullName2(rs.getString("name"));
-		contact.setEmail2(rs.getString("email"));
-		contact.setMobile2(rs.getString("mobile_num"));
-		contact.setSubject2(rs.getString("subject"));
+		contact.setName(rs.getString("name"));
+		contact.setEmail(rs.getString("email"));
+		contact.setMobile(rs.getString("mobile_num"));
+		contact.setSubject(rs.getString("subject"));
 		contact.setStatus(rs.getString("status"));
 		contact.setCreatedAt(rs.getTimestamp("created_at").toLocalDateTime());
 		contact.setCreatedBy(rs.getString("created_by"));

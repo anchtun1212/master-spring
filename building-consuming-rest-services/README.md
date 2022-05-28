@@ -1,0 +1,40 @@
+# REST services location:
+
+/src/main/java/com/anchtun/rest
+
+# We can build REST services by two ways:
+
+1- Spring MVC style: @Controller + @ResponseBody
+
+2- @RestController (recommended)
+
+# After restarting the server:
+
+Please save some data in `contact_msg` table then click on the link bellow in order to consume this endpoint:
+
+http://localhost:8080/api/contact/getMessageByStatus?status=OPEN
+
+# You can consume the endpoints using Postman
+
+1- Install postman.
+
+2- Add the endpoint to consume. Example: http://localhost:8080/api/contact/getMessageByStatus?status=OPEN (GET).
+
+3- Choose `Basic Auth` as `Authorization` and enter the `username` and `password` then call the endpoint.
+
+# Notes:
+
+- `@RestController`: can be used to put on top of a call. This will save developers from mentioning @ResponseBody on each 
+                       method.
+- `@ResponseBody`: can be used on top of a method to build a REST API when we are using @Controller on top of a Java class.
+- `ResponseEntity<T>`: Allow developers to send response body status, and headers on the HTTP response.
+- `RequestEntity<T>`: Allow developers to receive the request body, header in a HTTP request.
+- `@RequestHeader & @RequestBody`: is used to receive the request body and header individually.
+- `@RestControllerAdvice`: is used to mark the class as a REST controller advice. Along with @ExceptionHandler, this can be 
+                              used to handle exceptions globally inside app.
+
+# In this project:
+
+1- Build/consume REST service using Spring MVC style.
+
+2- Build/consume REST service using @RestController.

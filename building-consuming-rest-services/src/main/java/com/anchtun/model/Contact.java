@@ -59,29 +59,26 @@ public class Contact extends BaseEntity {
 
 	@NotBlank(message = "Name must not be blank")
 	@Size(min = 3, message = "Name must have at least 3 characters")
-	@Column(name = "name")
-	private String fullName2;
+	private String name;
 	
 	@NotBlank(message = "Mobile must not be blank")
 	@Pattern(regexp = "^([+]\\d{2})?\\d{10}$", message = "Mobile should be like this: Ex: +966123456789 or 0123456789")
 	@Column(name = "mobile_num")
-	private String mobile2;
+	private String mobile;
 	
 	@NotBlank(message = "Subject must not be blank")
 	@Size(min = 7, message = "Subject must have at least 7 characters")
-	@Column(name = "subject")
-	private String subject2;
+	private String subject;
 	
 	@NotBlank(message = "Email must not be blank")
 	@Email(message = "Please enter a valid email")
-	@Column(name = "email")
-	private String email2;
+	private String email;
 	
 	// mean message open or close
 	private String status;
 
 	@Override
 	public String toString() {
-		return "Contact [fullName=" + fullName2 + ", email=" + email2 + ", mobile=" + mobile2 + ", subject=" + subject2 + "]";
+		return "Contact [fullName=" + name + ", email=" + email + ", mobile=" + mobile + ", subject=" + subject + "]";
 	}
 }

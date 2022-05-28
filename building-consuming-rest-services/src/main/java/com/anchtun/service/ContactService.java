@@ -3,6 +3,7 @@ package com.anchtun.service;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -78,5 +79,16 @@ public class ContactService {
 		}
 		return isUpdated;
 	}
+	
+	public void deleteById(int id) {
+		contactRepository.deleteById(id);
+	}
 
+	public Optional<Contact> findById(int id) {
+		return contactRepository.findById(id);
+	}
+
+	public void saveContactDefault(Contact contact) {
+		contactRepository.save(contact);
+	}
 }
