@@ -11,7 +11,7 @@
 	<groupId>com.anchtun</groupId>
 	<artifactId>spring-data-jpa</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>spring-security</name>
+	<name>spring-data-jpa</name>
 	<description>spring-data-jpa</description>
 	<properties>
 		<java.version>11</java.version>
