@@ -1,15 +1,14 @@
 package com.anchtun.service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
-
-import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import com.anchtun.constants.Constants;
@@ -51,24 +50,29 @@ public class ContactService {
 	public Page<Contact> findByStatusPagination(int pageNum, String status) {
 		// pageNum - 1: mean which page, first page = 0, 2: mean number row per page
 		return contactRepository.findByStatus(status, PageRequest.of(pageNum - 1, 2, Sort.by("status").ascending()));
+		// use native query 
+		//return contactRepository.findByStatusNative(status, PageRequest.of(pageNum - 1, 3, Sort.by("status").ascending()));
 	}
 
-	@Transactional
+	//@Transactional: added on repository
 	// updatedBy will be handled by spring data jpa -auditing
 	//public boolean updateMsgStatus(int contactId, String updatedBy) {
 	public boolean updateMsgStatus(int contactId) {
 		boolean isUpdated = false;
-		// updatedBy will be handled by spring data jpa -auditing
-		// int result = contactRepository.updateStatus(Constants.CLOSE, updatedBy, contactId);
 		
-		Contact result = null;
-		Optional<Contact> contact = contactRepository.findById(contactId);
-		contact.ifPresent(c -> {
-			contact.get().setStatus(Constants.CLOSE);
-			contactRepository.save(contact.get());
-		});
-
-		if (Objects.nonNull(result)) {
+		String connectedUser = SecurityContextHolder.getContext().getAuthentication().getName();
+		int result = contactRepository.updateStatus(Constants.CLOSE, connectedUser, LocalDateTime.now(), contactId);
+		
+		// updatedBy will be handled by spring data jpa -auditing
+		// this will use save method that auto use auditing
+		//Contact result = null;
+		//Optional<Contact> contact = contactRepository.findById(contactId);
+		//contact.ifPresent(c -> {
+		//	contact.get().setStatus(Constants.CLOSE);
+		//	contactRepository.save(contact.get());
+		//});
+		
+		if (result > 0) {
 			isUpdated = true;
 			log.info("Contact updated !!!");
 		}
