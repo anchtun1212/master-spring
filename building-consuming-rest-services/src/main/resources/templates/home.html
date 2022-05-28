@@ -1,0 +1,39 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+<title>Home page</title>
+</head>
+
+<body>
+    Logged user: <span sec:authentication="name">Anchtun web application</span>
+    
+    <div sec:authorize="isAuthenticated()">
+	<h1 th:text="'Hello ' + ${userName} +'!!! to Anchtun web application'"></h1>
+	<br/>
+    <h1 th:text="'You are authenticated as ' + ${roles}"></h1>
+
+	<b><a style="color: blue" th:href=@{/profile} target="_blank">Profile</a></b> 
+	<br/><br/>
+	<b><a th:href=@{/messages} target="_blank" sec:authorize="hasRole('ROLE_ADMIN')">Messages</a></b> 
+	<br/><br/>
+	<!-- @{/displayMessages/page/0}; 0 mean first page -->
+	<b><a th:href=@{/displayMessages/page/1} target="_blank" sec:authorize="hasRole('ROLE_ADMIN')">Messages Pagination</a></b> 
+	<br/><br/>
+	<b><a th:href=@{/admin/classrooms} target="_blank" sec:authorize="hasRole('ROLE_ADMIN')">Classrooms</a></b> 
+	<br/><br/>
+	<b><a th:href=@{/admin/courses} target="_blank" sec:authorize="hasRole('ROLE_ADMIN')">Courses</a></b> 
+	<br/><br/>
+	<b><a th:href=@{/skillDB} target="_blank">Skills from PostgreSQL Database</a></b> 
+	<br/><br/>
+	<b><a th:href=@{/skillByLevelDB} target="_blank">Skills from PostgreSQL Database using NamedParameterJdbcTemplate</a></b> 
+	<br/><br/>
+	<b><a th:href=@{/contact} target="_blank">Contact me</a></b> 
+	<br/><br/>
+	<b><a th:href=@{/aboutme} target="_blank">About me</a></b> 
+	<br/><br/>
+	<b><a style="color: red" th:href=@{/logout}>Logout</a></b> 
+	</div>
+
+</body>
+</html>

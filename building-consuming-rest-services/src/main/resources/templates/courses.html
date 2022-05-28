@@ -1,0 +1,31 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+	<title>Courses page</title>
+	<link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+	 <div sec:authorize="hasRole('ROLE_ADMIN')">
+	    <b><a th:href=@{/admin/addcourse} target="_blank" >Add Course</a></b> 
+	    <br/><br/>
+	    
+	       <div th:each="course : ${courses}" class="Row">
+				<div class="Cell">
+					<h4 th:text="${course.name}"/>
+				</div>
+				<div class="Cell">
+					<b><a th:href=@{/admin/viewstudents(id=${course.courseId})} >VIEW</a></b>
+				</div>
+				<div class="Cell">
+					<b><a th:href=@{/admin/deletecourse(id=${course.courseId})} >DELETE</a></b>
+				</div>
+			</div>
+	
+	    <form>
+			<button th:formaction="@{/home}">Back</button>	
+		</form>
+	 </div>
+</body>
+</html>

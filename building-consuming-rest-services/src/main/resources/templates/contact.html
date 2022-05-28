@@ -1,0 +1,40 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+	<title>Contact page</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+	<div th:if="${#fields.errors('contact.*')}">
+		<ul>
+			<li class="alert alert-danger" role="alert" th:each="error : ${#fields.errors('contact.*')}" th:text="${error}">
+			</li>
+		</ul>
+	</div>
+	
+	<b><u>Contact:</u></b>
+	<br/><br/>
+	<b><a href = "mailto: med.aymen.charrada@gmail.com" target="_blank">email: med.aymen.charrada@gmail.com</a></b>
+	<br/><br/>
+	
+	<div sec:authorize="hasRole('ROLE_ADMIN')">
+	<h1>Send msg</h1>
+	<form th:action="@{/saveMsg2}" method="post">
+		<input type="text" id="fullName2" name="fullName2" placeholder="Please enter your full name"></input>
+		<br/><br/>
+		<input type="text" id="email2" name="email2" placeholder="Please enter your email" ></input>
+		<br/><br/>
+		<input type="text" id="mobile2" name="mobile2" placeholder="Please enter your mobile"></input>
+		<br/><br/>
+		<input type="text" id="subject2" name="subject2" placeholder="Please enter your subject"></input>
+		<br/><br/>
+		<input type="submit"></input>		
+	</form>
+	</div>
+	
+</body>
+
+</html>

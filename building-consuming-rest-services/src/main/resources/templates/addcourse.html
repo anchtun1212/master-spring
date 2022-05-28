@@ -1,0 +1,30 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+	<title>Add Course page</title>
+	<!-- just set style.css file under static folder -->
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+     <div th:if="${#fields.errors('course.*')}">
+		<ul>
+			<li class="alert alert-danger" role="alert" th:each="error : ${#fields.errors('course.*')}" th:text="${error}">
+			</li>
+		</ul>
+	</div>
+	
+	 <div sec:authorize="hasRole('ROLE_ADMIN')">
+	    	<h1>Classroom:</h1>
+			<form th:action="@{/admin/savecourse}" method="post" th:object="${course}">
+			    <label for="name">Name:</label>
+				<input type="text" id="name" name="name" th:field="*{name}" ></input>
+				<input type="submit" value="Save"></input>		
+			</form>
+			<form>
+				<button th:formaction="@{/admin/coursess}">Back</button>
+			</form>
+	 </div>
+</body>
+</html>
