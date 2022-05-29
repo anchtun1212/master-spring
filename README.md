@@ -22,3 +22,5 @@ Please follow this:
 10- spring-data-jpa
 
 11- building-consuming-rest-services
+
+12- consuming-rest-services
