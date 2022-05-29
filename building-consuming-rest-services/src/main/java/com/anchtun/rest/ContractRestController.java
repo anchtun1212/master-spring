@@ -10,12 +10,13 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
@@ -36,7 +37,16 @@ import lombok.extern.slf4j.Slf4j;
 // @RestController = @Controller + @ResponseBody
 @RestController
 // path prefix for rall contract endpoints
-@RequestMapping(path = "/api/contact")
+// response should be either JSON OR XML, but if you consume those endpoints using postman don't forget to add
+// header: Accept: application/xml in order to accept XML format
+@RequestMapping(path = "/api/contact", produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+// by default the browser will block any communication between server1 and server2
+// for example backend server deployed on server1, and the front application deployed on server2
+// or the deployed on the same server by with different ports
+// so in this case we can allow all origins (URLs) to consume endpoints like bellow
+@CrossOrigin(origins = "*")
+// or allow only this URL: http://localhost:8080 to consume endpoints like bellow
+//@CrossOrigin(origins = "http://localhost:8080")
 public class ContractRestController {
 
 	@Autowired
@@ -44,7 +54,7 @@ public class ContractRestController {
 
 	@GetMapping("/getMessageByStatus")
 	//@ResponseBody
-	public List<Contact> getMessagesByStatus(@RequestParam(name = "status") String status) {
+	public List<Contact> getMessagesByStatus(@RequestParam(name = "status") String status) throws Exception {
 		return contactService.findMsgsByStatus(status);
 	};
 

@@ -22,7 +22,7 @@ http://localhost:8080/api/contact/getMessageByStatus?status=OPEN
 
 3- Choose `Basic Auth` as `Authorization` and enter the `username` and `password` then call the endpoint.
 
-# Notes:
+# Important:
 
 - `@RestController`: can be used to put on top of a call. This will save developers from mentioning @ResponseBody on each 
                        method.
@@ -35,6 +35,22 @@ http://localhost:8080/api/contact/getMessageByStatus?status=OPEN
 
 # In this project:
 
-1- Build/consume REST service using Spring MVC style.
+1- Build REST services using Spring MVC style.
 
-2- Build/consume REST service using @RestController.
+2- Build REST services using @RestController.
+
+3- Implement global error logic for REST services using @RestControllerAdvice.
+
+4- CORS (CROSS-ORIGIN RESOURCE SHARING).
+
+5- Sending response on XML format.
+
+6- Use @JsonIgnore and @JsonIgnoreProperties.
+
+# Note:
+
+- All REST services was consumed using `Postman`.
+
+- Don't forgot to add `Authorization`: `Basic Auth` in order to consume REST services.
+
+- You can run both this project and `consuming-rest-services` project in order to consume REST service using Java.
