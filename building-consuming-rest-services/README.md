@@ -54,3 +54,7 @@ http://localhost:8080/api/contact/getMessageByStatus?status=OPEN
 - Don't forgot to add `Authorization`: `Basic Auth` in order to consume REST services.
 
 - You can run both this project and `consuming-rest-services` project in order to consume REST services using Java.
+
+- Please refer to this documentation in order to consume REST service:
+
+  [https://documenter.getpostman.com/view/5600930/Uz5Dobw5](https://documenter.getpostman.com/view/5600930/Uz5Dobw5)
