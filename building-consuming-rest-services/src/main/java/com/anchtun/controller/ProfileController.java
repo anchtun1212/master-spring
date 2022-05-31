@@ -21,13 +21,14 @@ import com.anchtun.service.PersonService;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-@Controller
+// rename it to: "userProfileController" to not confuse with profileController provided by spring data REST
+@Controller(value = "userProfileController")
 public class ProfileController {
 	
 	@Autowired
 	private PersonService personService;
 
-	@GetMapping("/profile")
+	@GetMapping("/userProfile")
 	public String goToProfile(Model model, HttpSession httpSession) {
 		Person person = (Person) httpSession.getAttribute("personLoggedIn");
 		Profile profile = Profile.builder().name(person.getName()).mobileNumber(person.getMobileNumber())
@@ -65,7 +66,7 @@ public class ProfileController {
 		
 		personService.savePersonDefault(person);
 
-		return ("redirect:/profile");
+		return ("redirect:/userProfile");
 	}
 
 }

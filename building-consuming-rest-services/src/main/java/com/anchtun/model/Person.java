@@ -23,6 +23,7 @@ import javax.validation.constraints.Size;
 
 import com.anchtun.annotation.FieldsValueMatch;
 import com.anchtun.annotation.PasswordValidator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Data;
 
@@ -65,17 +66,20 @@ public class Person extends BaseEntity {
 	@Email(message = "Please enter a valid confirm email")
 	// to tell spring data jpa to not use this field for all DB operations
 	@Transient
+	@JsonIgnore
 	private String confirmEmail;
 	
 	@NotBlank(message = "Password must not be blank")
 	@Size(min = 5, message = "Password must have at least 5 characters")
 	@PasswordValidator
+	@JsonIgnore
 	private String password;
 	
 	@NotBlank(message = "Confirm password must not be blank")
 	@Size(min = 5, message = "Confirm password must have at least 5 characters")
 	// to tell spring data jpa to not use this field for all DB operations
 	@Transient
+	@JsonIgnore
 	private String confirmPassword;
 	
 	// fetch type by default EAGER for ToOne

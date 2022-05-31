@@ -13,7 +13,7 @@
 	<br/>
     <h1 th:text="'You are authenticated as ' + ${roles}"></h1>
 
-	<b><a style="color: blue" th:href=@{/profile} target="_blank">Profile</a></b> 
+	<b><a style="color: blue" th:href=@{/userProfile} target="_blank">Profile</a></b> 
 	<br/><br/>
 	<b><a th:href=@{/messages} target="_blank" sec:authorize="hasRole('ROLE_ADMIN')">Messages</a></b> 
 	<br/><br/>

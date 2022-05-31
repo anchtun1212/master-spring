@@ -21,16 +21,16 @@
     <div class="Cell">Status</div>
     <div th:each="msg : ${contactMsgs}" class="Row">
 		<div class="Cell">
-			<h2 th:text="${msg.fullName2}"></h2>
+			<h2 th:text="${msg.name}"></h2>
 		</div>
 		<div class="Cell">
-			<h2 th:text="${msg.email2}"></h2>
+			<h2 th:text="${msg.email}"></h2>
 		</div>
 		<div class="Cell">
-			<h2 th:text="${msg.mobile2}"></h2>
+			<h2 th:text="${msg.mobile}"></h2>
 		</div>
 		<div class="Cell">
-			<h2 th:text="${msg.subject2}"></h2>
+			<h2 th:text="${msg.subject}"></h2>
 		</div>
 		<div class="Cell">
 			<h2 th:text="${msg.status}"></h2>

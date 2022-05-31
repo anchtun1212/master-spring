@@ -47,6 +47,12 @@ http://localhost:8080/api/contact/getMessageByStatus?status=OPEN
 
 6- Use @JsonIgnore and @JsonIgnoreProperties.
 
+7- Spring Data REST.
+
+8- HAL explorer.
+
+9- @RepositoryRestResource annotation.
+
 # Note:
 
 - All REST services was consumed using `Postman`.
@@ -58,3 +64,17 @@ http://localhost:8080/api/contact/getMessageByStatus?status=OPEN
 - Please refer to this documentation in order to consume REST service:
 
   [https://documenter.getpostman.com/view/5600930/Uz5Dobw5](https://documenter.getpostman.com/view/5600930/Uz5Dobw5)
+ 
+ - Once you add spring data rest starter, run the application to check REST APIs exposed by Spring Data REST, so open this link:
+ 
+   [http://localhost:8080/anchtun-api/profile](http://localhost:8080/anchtun-api/profile)
+   
+ - HAL(Hypertext Application Language) will make your API explorable (make you API easier to work)  so please open:
+ 
+   [http://localhost:8080/anchtun-api](http://localhost:8080/anchtun-api)
+   
+ - To check APIs for search you can simply add '/search' like this:
+ 
+   [http://localhost:8080/anchtun-api/courses/search](http://localhost:8080/anchtun-api/courses/search)
+ 
+ 

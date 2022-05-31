@@ -39,7 +39,9 @@ public class ProjectSecurityConfig extends WebSecurityConfigurerAdapter {
 		// disable csrf for all public paths because there is no secure data
 		.ignoringAntMatchers("/public/**")
 		// disable csrf
-		.ignoringAntMatchers("/api/**").and()
+		.ignoringAntMatchers("/api/**")
+		// disable csrf: will be invoked from java code and not from browser
+		.ignoringAntMatchers("/anchtun-api/**").and()
 		// this line is mandatory for any kind of configuration  
 		.authorizeRequests()
 		// will configure page by page
@@ -58,13 +60,14 @@ public class ProjectSecurityConfig extends WebSecurityConfigurerAdapter {
 		.antMatchers("/messages").hasRole("ADMIN")
 		.antMatchers("/skillDB").permitAll()
 		.antMatchers("/skillByLevelDB").permitAll()
-		.mvcMatchers("/profile").authenticated()
+		.mvcMatchers("/userProfile").authenticated()
 		.mvcMatchers("/updateprofile").authenticated()
 		.mvcMatchers("/admin/**").hasRole("ADMIN")
 		// permit all that are under public: register page,...
 		.antMatchers("/public/**").permitAll()
 		// need to be authenticated in order to consume api endpoints
 		.mvcMatchers("/api/**").authenticated()
+		.antMatchers("/anchtun-api/**").authenticated()
 		.and().formLogin()
 		// configure our custom login page (not login page provided by default from Spring)
 		.loginPage("/login").defaultSuccessUrl("/home").failureUrl("/login?error=true").permitAll()
