@@ -53,6 +53,8 @@ http://localhost:8080/api/contact/getMessageByStatus?status=OPEN
 
 9- @RepositoryRestResource annotation.
 
+10- Logging.
+
 # Note:
 
 - All REST services was consumed using `Postman`.

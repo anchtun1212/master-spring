@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.anchtun.model.Person;
 import com.anchtun.service.PersonService;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Controller
 public class HomeController {
 
@@ -33,6 +36,9 @@ public class HomeController {
 		model.addAttribute("userName", auth.getName());
 		model.addAttribute("roles", auth.getAuthorities().toString());
 		httpSession.setAttribute("personLoggedIn", person);
+		
+		// to check logging
+		logMessages();
 		return "home.html";
 	}
 	
@@ -44,6 +50,15 @@ public class HomeController {
 	@RequestMapping(value = "/illegalArgumentException")
 	public String homeIllegalArgsPage() {
 		throw new IllegalArgumentException("IllegalArgumentException happened! Please check your data!");
+	}
+	
+	// test logging
+	private void logMessages() {
+		log.error("Error message from Home page");
+		log.warn("Warn message from Home page");
+		log.info("Info message from Home page");
+		log.debug("Debug message from Home page");
+		log.trace("Trace message from Home page");
 	}
 
 }

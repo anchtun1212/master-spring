@@ -31,7 +31,7 @@ public class LoggerAspect {
 	
 	@AfterThrowing(value = "execution(* com.anchtun..*.*(..))", throwing = "exc")
 	public void logException(JoinPoint joinPoint, Exception exc) {
-		log.info("An exception occured with the help of @AfterThrowing: " + exc.getMessage());
+		log.error("An exception occured with the help of @AfterThrowing: " + exc.getMessage());
 	}
 	
 }
