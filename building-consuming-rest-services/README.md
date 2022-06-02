@@ -55,6 +55,8 @@ http://localhost:8080/api/contact/getMessageByStatus?status=OPEN
 
 10- Logging.
 
+11- Properties configuration and Profiles.
+
 # Note:
 
 - All REST services was consumed using `Postman`.

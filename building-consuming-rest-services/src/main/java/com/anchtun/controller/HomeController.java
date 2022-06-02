@@ -3,6 +3,8 @@ package com.anchtun.controller;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.env.Environment;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,6 +30,15 @@ public class HomeController {
 	
 	@Autowired
 	private PersonService personService;
+	
+	@Value("${anchtun.app.pagesize.default}")
+	private int defaultPageSize;
+	
+	@Value("${anchtun.app.message.success}")
+	private String successMsg;
+	
+	@Autowired
+	private Environment environment;
 	
 	@RequestMapping(value = "/home")
 	public String homePage(Authentication auth, Model model, HttpSession httpSession) {
@@ -59,6 +70,15 @@ public class HomeController {
 		log.info("Info message from Home page");
 		log.debug("Debug message from Home page");
 		log.trace("Trace message from Home page");
+		
+		// check @Value
+		log.info("defaultPageSize= " + defaultPageSize);
+		log.info("successMsg= " + successMsg);
+		
+		// check Environment interface
+		log.info("errorMsg= " + environment.getProperty("anchtun.app.message.error"));
+		// we can also use Environment interface to get server environment
+		log.info("JAVA_HOME= " + environment.getProperty("JAVA_HOME"));
 	}
 
 }

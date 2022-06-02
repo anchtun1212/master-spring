@@ -12,6 +12,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import com.anchtun.config.AnchtunProps;
 import com.anchtun.constants.Constants;
 import com.anchtun.model.Contact;
 import com.anchtun.repository.ContactRepository;
@@ -24,6 +25,10 @@ public class ContactService {
 
 	@Autowired
 	private ContactRepository contactRepository;
+	
+	// inject AnchtunProps bean
+	@Autowired
+	private AnchtunProps anchtunProps;
 
 	public ContactService() {
 		log.info("Contact service Bean initialized");
@@ -47,13 +52,22 @@ public class ContactService {
 		return contactRepository.findByStatus(status);
 	}
 	
-	// use pagination and dynamic sorting
+	// will get properties from AnchtunProps
 	public Page<Contact> findByStatusPagination(int pageNum, String status) {
+		// pageNum - 1: mean which page, first page = 0, 2: mean number row per page
+		int pageSize = Integer.parseInt(anchtunProps.getContact().get("pageSize"));
+		return contactRepository.findByStatus(status, PageRequest.of(pageNum - 1, pageSize, Sort.by("status").ascending()));
+		// use native query 
+		//return contactRepository.findByStatusNative(status, PageRequest.of(pageNum - 1, 3, Sort.by("status").ascending()));
+	}
+	
+	// use pagination and dynamic sorting
+	/*public Page<Contact> findByStatusPagination(int pageNum, String status) {
 		// pageNum - 1: mean which page, first page = 0, 2: mean number row per page
 		return contactRepository.findByStatus(status, PageRequest.of(pageNum - 1, 2, Sort.by("status").ascending()));
 		// use native query 
 		//return contactRepository.findByStatusNative(status, PageRequest.of(pageNum - 1, 3, Sort.by("status").ascending()));
-	}
+	}*/
 
 	//@Transactional: added on repository
 	// updatedBy will be handled by spring data jpa -auditing
