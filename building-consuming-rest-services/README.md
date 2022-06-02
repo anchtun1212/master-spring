@@ -57,6 +57,18 @@ http://localhost:8080/api/contact/getMessageByStatus?status=OPEN
 
 11- Properties configuration and Profiles.
 
+# Profile
+
+- We will activate the `prod` profile using: Java System property way (best way and automatic).
+
+- So go to the folder where exists the pom.xml.
+
+- run this command: ```mvn clean install -Dmaven.test.skip=true```  will skip unit test just to generate the jar quickly.
+
+- The jar should be generated under target folder (this jar have embedded tomcat server so we can deploy this jar).
+
+- Will run this jar by running this command: ```mvn spring-boot:run "-Dspring-boot.run.profiles=prod"``` 
+
 # Note:
 
 - All REST services was consumed using `Postman`.
@@ -80,5 +92,7 @@ http://localhost:8080/api/contact/getMessageByStatus?status=OPEN
  - To check APIs for search you can simply add '/search' like this:
  
    [http://localhost:8080/anchtun-api/courses/search](http://localhost:8080/anchtun-api/courses/search)
+   
+ - To check profiles works well please check the log: spring.jpa.show-sql and spring.jpa.properties.hibernate.format_sql
  
  

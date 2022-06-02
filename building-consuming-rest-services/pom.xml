@@ -12,6 +12,8 @@
 	<artifactId>building-consuming-rest-services</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>building-consuming-rest-services</name>
+	<!-- Jar to package our web application -->
+	<packaging>jar</packaging>
 	<description>building-consuming-rest-services</description>
 	<properties>
 		<java.version>11</java.version>

@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Objects;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -25,6 +26,8 @@ import com.anchtun.repository.PersonRepository;
  */
 
 @Component
+// used only for prod profile
+@Profile("prod")
 public class AnchtunUsernamePasswordAuthenticationProvider implements AuthenticationProvider {
 
 	@Autowired
