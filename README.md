@@ -24,3 +24,5 @@ Please follow this:
 11- building-consuming-rest-services
 
 12- consuming-rest-services
+
+13- spring-boot-admin
