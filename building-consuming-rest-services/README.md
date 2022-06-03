@@ -59,6 +59,7 @@ http://localhost:8080/api/contact/getMessageByStatus?status=OPEN
 
 12- Spring boot Actuator.
 
+13- Spring Boot Admin.
 
 # Profile
 
@@ -106,6 +107,12 @@ http://localhost:8080/api/contact/getMessageByStatus?status=OPEN
  
  - By default Actuator doesn't expose many of the endpoints since they have sensitive information. We can expose them using the 
  
-   this property: `management.endpoints.web.exposure.include=*`, we add this property only for `prod` profile.    
+   this property: `management.endpoints.web.exposure.include=*`, we add this property only for `prod` profile.
+   
+ - To check the data inside spring boot admin UI, you should add the right dependencies in pom.xml and add the right 
+ 
+   configurations inside application.properties then run spring boot admin server and then run this application and make some 
+   
+   actions and see those actions in spring boot admin UI.       
  
  
