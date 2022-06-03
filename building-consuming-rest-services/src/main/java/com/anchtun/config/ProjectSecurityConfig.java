@@ -41,7 +41,8 @@ public class ProjectSecurityConfig extends WebSecurityConfigurerAdapter {
 		// disable csrf
 		.ignoringAntMatchers("/api/**")
 		// disable csrf: will be invoked from java code and not from browser
-		.ignoringAntMatchers("/anchtun-api/**").and()
+		.ignoringAntMatchers("/anchtun-api/**")
+		.ignoringAntMatchers("/anchtun/actuator/**").and()
 		// this line is mandatory for any kind of configuration  
 		.authorizeRequests()
 		// will configure page by page
@@ -62,6 +63,7 @@ public class ProjectSecurityConfig extends WebSecurityConfigurerAdapter {
 		.antMatchers("/skillByLevelDB").permitAll()
 		.mvcMatchers("/userProfile").authenticated()
 		.mvcMatchers("/updateprofile").authenticated()
+		.mvcMatchers("/anchtun/actuator/**").hasRole("ADMIN")
 		.mvcMatchers("/admin/**").hasRole("ADMIN")
 		// permit all that are under public: register page,...
 		.antMatchers("/public/**").permitAll()

@@ -57,6 +57,9 @@ http://localhost:8080/api/contact/getMessageByStatus?status=OPEN
 
 11- Properties configuration and Profiles.
 
+12- Spring boot Actuator.
+
+
 # Profile
 
 - We will activate the `prod` profile using: Java System property way (best way and automatic).
@@ -93,6 +96,16 @@ http://localhost:8080/api/contact/getMessageByStatus?status=OPEN
  
    [http://localhost:8080/anchtun-api/courses/search](http://localhost:8080/anchtun-api/courses/search)
    
- - To check profiles works well please check the log: spring.jpa.show-sql and spring.jpa.properties.hibernate.format_sql
+ - To check profiles works well please check the log and see if the queries are shown/formatted: spring.jpa.show-sql and 
+ 
+   spring.jpa.properties.hibernate.format_sql.
+ 
+ - To check spring boot Actuator please login then open this link:
+ 
+   [http://localhost:8080/actuator](http://localhost:8080/actuator)
+ 
+ - By default Actuator doesn't expose many of the endpoints since they have sensitive information. We can expose them using the 
+ 
+   this property: `management.endpoints.web.exposure.include=*`, we add this property only for `prod` profile.    
  
  
